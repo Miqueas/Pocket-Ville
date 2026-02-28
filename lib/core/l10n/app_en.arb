@@ -1,0 +1,59 @@
+{
+  "@@locale": "en",
+  "onboardingTitle01": "All Pokémon in one place",
+  "@onboardingTitle01": {
+    "description": "Title shown in the 1st onboarding page"
+  },
+  "onboardingSubtitle01": "Access a wide list of Pokémon from all generations created by Nintendo",
+  "@onboardingSubtitle01": {
+    "description": "Subtitle shown in the 1st onboarding page"
+  },
+  "onboardingTitle02": "Keep your Pokédex updated",
+  "@onboardingTitle02": {
+    "description": "Title shown in the 2nd onboarding page"
+  },
+  "onboardingSubtitle02": "Register and save your profile, favorite Pokémon, settings, and much more in the app.",
+  "@onboardingSubtitle02": {
+    "description": "Subtitle shown in the 2nd onboarding page"
+  },
+  "onboardingContinue": "Continue",
+  "@onboardingContinue": {
+    "description": "Text shown in the button to continue to the next onboarding page"
+  },
+  "onboardingGetStarted": "Get Started",
+  "@onboardingGetStarted": {
+    "description": "Text shown in the button to finish the onboarding"
+  },
+  "pokedex": "Pokédex",
+  "@pokedex": {
+    "description": "Title of the Pokédex page"
+  },
+  "regions": "Regions",
+  "@regions": {
+    "description": "Title of the Regions page"
+  },
+  "favorites": "Favorites",
+  "@favorites": {
+    "description": "Title of the Favorites page"
+  },
+  "profile": "Profile",
+  "@profile": {
+    "description": "Title of the Profile page"
+  },
+  "somethingWentWrong": "Something went wrong...",
+  "@somethingWentWrong": {
+    "description": "Generic message shown when an error occurs"
+  },
+  "networkErrorMessage": "We were unable to load the information at this time. Please check your connection or try again later.",
+  "@networkErrorMessage": {
+    "description": "Message shown when a network error occurs"
+  },
+  "noFavoritesTitle": "You haven''t marked any Pokémon as favorites.",
+  "@noFavoritesTitle": {
+    "description": "Title shown when there are no favorite Pokémon"
+  },
+  "noFavoritesSubtitle": "Tap on the heart icon of your favorite Pokémon and they will appear here.",
+  "@noFavoritesSubtitle": {
+    "description": "Subtitle shown when there are no favorite Pokémon"
+  }
+}
