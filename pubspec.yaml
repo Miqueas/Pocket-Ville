@@ -27,12 +27,14 @@ dev_dependencies:
   freezed: ^3.2.5
   json_serializable: ^6.13.0
   riverpod_generator: ^4.0.3
+  flutter_native_splash: ^2.4.7
 
 flutter:
   generate: true
   uses-material-design: true
 
   assets:
+    - assets/splash/pokeball.svg
     - assets/onboarding/hilda-dark-mode.svg
     - assets/onboarding/hilda-light-mode.svg
     - assets/onboarding/kid-doctor-dark-mode.svg
