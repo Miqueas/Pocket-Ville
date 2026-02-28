@@ -1,4 +1,4 @@
-package io.github.Miqueas.pokedex
+package io.github.Miqueas.PocketVille
 
 import io.flutter.embedding.android.FlutterActivity
 
