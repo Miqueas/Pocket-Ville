@@ -42,8 +42,23 @@ extension _SplashAnimation on _SplashScreenState {
     await _sparkleController.forward();
     await Future.delayed(const Duration(milliseconds: 400));
 
-    // Phase 4: Fade
-    await _fadeController.forward();
+    if (mounted) {
+      // Fades out to the onboarding screen
+      Navigator.of(context).pushReplacement(
+        PageRouteBuilder(
+          settings: const RouteSettings(name: '/onboarding'),
+          pageBuilder: (_, animation, _) => FadeTransition(
+            opacity: animation,
+            child: const OnboardingScreen(),
+          ),
+          transitionDuration: const Duration(milliseconds: 1000),
+          transitionsBuilder: (_, animation, _, child) => FadeTransition(
+            opacity: animation,
+            child: child,
+          ),
+        ),
+      );
+    }
   }
 
   void _setupAnimations() {
@@ -152,16 +167,6 @@ extension _SplashAnimation on _SplashScreenState {
 
     _sparkleScale = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _sparkleController, curve: Curves.elasticOut),
-    );
-
-    // Phase 4: Fade
-    _fadeController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 600),
-    );
-
-    _fadeAnimation = Tween<double>(begin: 1, end: 0).animate(
-      CurvedAnimation(parent: _fadeController, curve: Curves.easeIn),
     );
   }
 }
