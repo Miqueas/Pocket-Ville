@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pocket_ville/core/presentation/widgets/base_button.dart';
 
-final class PrimaryButton extends StatelessWidget {
-  const PrimaryButton({
+final class SecondaryButton extends StatelessWidget {
+  const SecondaryButton({
     super.key,
     this.width,
     this.height,
@@ -17,9 +17,9 @@ final class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BaseButton(
     width: width,
-    height: height,
-    normalColor: HSLColor.fromAHSL(1, 208, .79, .51).toColor(),
-    pressedColor: HSLColor.fromAHSL(1, 212, .8, .42).toColor(),
+    height: height, 
+    normalColor: HSLColor.fromAHSL(1, 0, 0, .93).toColor(),
+    pressedColor: HSLColor.fromAHSL(1, 0, 0, .84).toColor(),
     onPressed: onPressed,
     child: child,
   );
