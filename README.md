@@ -1,3 +1,7 @@
+<p>
+  <img src="assets/splash/pokeball.svg" width="64" height="64">
+</p>
+
 # Pocket Ville
 
 The practical encyclopedia for trainers, at your fingertips. Dive in the horizons of the Pokémon universe and save all your favorite battle pals.
