@@ -48,7 +48,7 @@ final class _OnboardingScreenState extends State<OnboardingScreen> {
           }
 
           if (_controller.page! > .5) {
-            // TODO: Navigate to the main screen
+            Navigator.of(context).pushReplacementNamed('/');
           }
         },
         child: OnboardingAnimatedButtonText(controller: _controller,),
