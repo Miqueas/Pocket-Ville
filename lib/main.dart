@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocket_ville/core/l10n/app_localizations.dart';
-import 'package:pocket_ville/features/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:pocket_ville/features/splash/presentation/screens/splash_screen.dart';
 
 void main() => runApp(const ProviderScope(
   child: PocketVilleApp(
-    home: OnboardingScreen(),
+    home: SplashScreen(),
   ),
 ));
 
