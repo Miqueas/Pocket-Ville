@@ -18,8 +18,8 @@ final class PrimaryButton extends StatefulWidget {
 }
 
 final class _PrimaryButtonState extends State<PrimaryButton> {
-  final _normalColor = HSLColor.fromAHSL(1, 208, 0.79, 0.51).toColor();
-  final _pressedColor = HSLColor.fromAHSL(1, 208, 0.79, 0.51).toColor();
+  final _normalColor = HSLColor.fromAHSL(1, 208, .79, .51).toColor();
+  final _pressedColor = HSLColor.fromAHSL(1, 212, .8, .42).toColor();
   var _isPressed = false;
 
   @override
