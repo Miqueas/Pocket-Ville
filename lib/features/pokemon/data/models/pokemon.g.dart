@@ -6,10 +6,33 @@ part of 'pokemon.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_Pokemon _$PokemonFromJson(Map<String, dynamic> json) =>
-    _Pokemon(name: json['name'] as String, url: json['url'] as String);
-
 Map<String, dynamic> _$PokemonToJson(_Pokemon instance) => <String, dynamic>{
+  'id': instance.id,
   'name': instance.name,
-  'url': instance.url,
+  'height': instance.height,
+  'weight': instance.weight,
+  'showdownImageUrl': instance.showdownImageUrl,
+  'frontDefaultImageUrl': instance.frontDefaultImageUrl,
+  'types': instance.types.map((e) => _$PokemonTypeEnumMap[e]!).toList(),
+};
+
+const _$PokemonTypeEnumMap = {
+  PokemonType.bug: 'bug',
+  PokemonType.dark: 'dark',
+  PokemonType.dragon: 'dragon',
+  PokemonType.electric: 'electric',
+  PokemonType.fairy: 'fairy',
+  PokemonType.fighting: 'fighting',
+  PokemonType.fire: 'fire',
+  PokemonType.flying: 'flying',
+  PokemonType.ghost: 'ghost',
+  PokemonType.grass: 'grass',
+  PokemonType.ground: 'ground',
+  PokemonType.ice: 'ice',
+  PokemonType.normal: 'normal',
+  PokemonType.poison: 'poison',
+  PokemonType.psychic: 'psychic',
+  PokemonType.rock: 'rock',
+  PokemonType.steel: 'steel',
+  PokemonType.water: 'water',
 };

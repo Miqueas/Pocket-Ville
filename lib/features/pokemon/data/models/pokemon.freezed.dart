@@ -11,11 +11,10 @@ part of 'pokemon.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
-
 /// @nodoc
 mixin _$Pokemon {
 
- String get name; String get url;
+ int get id; String get name; double get height; double get weight; String get showdownImageUrl; String get frontDefaultImageUrl; List<PokemonType> get types;
 /// Create a copy of Pokemon
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +27,16 @@ $PokemonCopyWith<Pokemon> get copyWith => _$PokemonCopyWithImpl<Pokemon>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Pokemon&&(identical(other.name, name) || other.name == name)&&(identical(other.url, url) || other.url == url));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Pokemon&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.height, height) || other.height == height)&&(identical(other.weight, weight) || other.weight == weight)&&(identical(other.showdownImageUrl, showdownImageUrl) || other.showdownImageUrl == showdownImageUrl)&&(identical(other.frontDefaultImageUrl, frontDefaultImageUrl) || other.frontDefaultImageUrl == frontDefaultImageUrl)&&const DeepCollectionEquality().equals(other.types, types));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,url);
+int get hashCode => Object.hash(runtimeType,id,name,height,weight,showdownImageUrl,frontDefaultImageUrl,const DeepCollectionEquality().hash(types));
 
 @override
 String toString() {
-  return 'Pokemon(name: $name, url: $url)';
+  return 'Pokemon(id: $id, name: $name, height: $height, weight: $weight, showdownImageUrl: $showdownImageUrl, frontDefaultImageUrl: $frontDefaultImageUrl, types: $types)';
 }
 
 
@@ -48,7 +47,7 @@ abstract mixin class $PokemonCopyWith<$Res>  {
   factory $PokemonCopyWith(Pokemon value, $Res Function(Pokemon) _then) = _$PokemonCopyWithImpl;
 @useResult
 $Res call({
- String name, String url
+ int id, String name, double height, double weight, String showdownImageUrl, String frontDefaultImageUrl, List<PokemonType> types
 });
 
 
@@ -65,11 +64,16 @@ class _$PokemonCopyWithImpl<$Res>
 
 /// Create a copy of Pokemon
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? url = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? height = null,Object? weight = null,Object? showdownImageUrl = null,Object? frontDefaultImageUrl = null,Object? types = null,}) {
   return _then(_self.copyWith(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
-as String,
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,height: null == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
+as double,weight: null == weight ? _self.weight : weight // ignore: cast_nullable_to_non_nullable
+as double,showdownImageUrl: null == showdownImageUrl ? _self.showdownImageUrl : showdownImageUrl // ignore: cast_nullable_to_non_nullable
+as String,frontDefaultImageUrl: null == frontDefaultImageUrl ? _self.frontDefaultImageUrl : frontDefaultImageUrl // ignore: cast_nullable_to_non_nullable
+as String,types: null == types ? _self.types : types // ignore: cast_nullable_to_non_nullable
+as List<PokemonType>,
   ));
 }
 
@@ -154,10 +158,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String url)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  double height,  double weight,  String showdownImageUrl,  String frontDefaultImageUrl,  List<PokemonType> types)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Pokemon() when $default != null:
-return $default(_that.name,_that.url);case _:
+return $default(_that.id,_that.name,_that.height,_that.weight,_that.showdownImageUrl,_that.frontDefaultImageUrl,_that.types);case _:
   return orElse();
 
 }
@@ -175,10 +179,10 @@ return $default(_that.name,_that.url);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String url)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  double height,  double weight,  String showdownImageUrl,  String frontDefaultImageUrl,  List<PokemonType> types)  $default,) {final _that = this;
 switch (_that) {
 case _Pokemon():
-return $default(_that.name,_that.url);case _:
+return $default(_that.id,_that.name,_that.height,_that.weight,_that.showdownImageUrl,_that.frontDefaultImageUrl,_that.types);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -195,10 +199,10 @@ return $default(_that.name,_that.url);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String url)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  double height,  double weight,  String showdownImageUrl,  String frontDefaultImageUrl,  List<PokemonType> types)?  $default,) {final _that = this;
 switch (_that) {
 case _Pokemon() when $default != null:
-return $default(_that.name,_that.url);case _:
+return $default(_that.id,_that.name,_that.height,_that.weight,_that.showdownImageUrl,_that.frontDefaultImageUrl,_that.types);case _:
   return null;
 
 }
@@ -207,14 +211,25 @@ return $default(_that.name,_that.url);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 
 class _Pokemon implements Pokemon {
-  const _Pokemon({required this.name, required this.url});
-  factory _Pokemon.fromJson(Map<String, dynamic> json) => _$PokemonFromJson(json);
+  const _Pokemon({required this.id, required this.name, required this.height, required this.weight, required this.showdownImageUrl, required this.frontDefaultImageUrl, required final  List<PokemonType> types}): _types = types;
+  
 
+@override final  int id;
 @override final  String name;
-@override final  String url;
+@override final  double height;
+@override final  double weight;
+@override final  String showdownImageUrl;
+@override final  String frontDefaultImageUrl;
+ final  List<PokemonType> _types;
+@override List<PokemonType> get types {
+  if (_types is EqualUnmodifiableListView) return _types;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_types);
+}
+
 
 /// Create a copy of Pokemon
 /// with the given fields replaced by the non-null parameter values.
@@ -229,16 +244,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Pokemon&&(identical(other.name, name) || other.name == name)&&(identical(other.url, url) || other.url == url));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Pokemon&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.height, height) || other.height == height)&&(identical(other.weight, weight) || other.weight == weight)&&(identical(other.showdownImageUrl, showdownImageUrl) || other.showdownImageUrl == showdownImageUrl)&&(identical(other.frontDefaultImageUrl, frontDefaultImageUrl) || other.frontDefaultImageUrl == frontDefaultImageUrl)&&const DeepCollectionEquality().equals(other._types, _types));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,url);
+int get hashCode => Object.hash(runtimeType,id,name,height,weight,showdownImageUrl,frontDefaultImageUrl,const DeepCollectionEquality().hash(_types));
 
 @override
 String toString() {
-  return 'Pokemon(name: $name, url: $url)';
+  return 'Pokemon(id: $id, name: $name, height: $height, weight: $weight, showdownImageUrl: $showdownImageUrl, frontDefaultImageUrl: $frontDefaultImageUrl, types: $types)';
 }
 
 
@@ -249,7 +264,7 @@ abstract mixin class _$PokemonCopyWith<$Res> implements $PokemonCopyWith<$Res> {
   factory _$PokemonCopyWith(_Pokemon value, $Res Function(_Pokemon) _then) = __$PokemonCopyWithImpl;
 @override @useResult
 $Res call({
- String name, String url
+ int id, String name, double height, double weight, String showdownImageUrl, String frontDefaultImageUrl, List<PokemonType> types
 });
 
 
@@ -266,11 +281,16 @@ class __$PokemonCopyWithImpl<$Res>
 
 /// Create a copy of Pokemon
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? url = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? height = null,Object? weight = null,Object? showdownImageUrl = null,Object? frontDefaultImageUrl = null,Object? types = null,}) {
   return _then(_Pokemon(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
-as String,
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,height: null == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
+as double,weight: null == weight ? _self.weight : weight // ignore: cast_nullable_to_non_nullable
+as double,showdownImageUrl: null == showdownImageUrl ? _self.showdownImageUrl : showdownImageUrl // ignore: cast_nullable_to_non_nullable
+as String,frontDefaultImageUrl: null == frontDefaultImageUrl ? _self.frontDefaultImageUrl : frontDefaultImageUrl // ignore: cast_nullable_to_non_nullable
+as String,types: null == types ? _self._types : types // ignore: cast_nullable_to_non_nullable
+as List<PokemonType>,
   ));
 }
 
