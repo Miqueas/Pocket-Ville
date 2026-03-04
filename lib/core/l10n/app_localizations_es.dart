@@ -53,4 +53,33 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get noFavoritesSubtitle =>
       'Haz clic en el ícono de corazón de tus Pokémon favoritos y aparecerán aquí.';
+
+  @override
+  String get searchPokemon => 'Buscar Pokémon...';
+
+  @override
+  String pokemonType(String type) {
+    String _temp0 = intl.Intl.selectLogic(type, {
+      'bug': 'Bicho',
+      'dark': 'Siniestro',
+      'dragon': 'Dragón',
+      'electric': 'Eléctrico',
+      'fairy': 'Hada',
+      'fighting': 'Lucha',
+      'fire': 'Fuego',
+      'flying': 'Volador',
+      'ghost': 'Fantasma',
+      'grass': 'Planta',
+      'ground': 'Tierra',
+      'ice': 'Hielo',
+      'normal': 'Normal',
+      'poison': 'Veneno',
+      'psychic': 'Psíquico',
+      'rock': 'Roca',
+      'steel': 'Acero',
+      'water': 'Agua',
+      'other': 'Otro',
+    });
+    return '$_temp0';
+  }
 }

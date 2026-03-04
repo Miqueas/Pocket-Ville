@@ -181,6 +181,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tap on the heart icon of your favorite Pokémon and they will appear here.'**
   String get noFavoritesSubtitle;
+
+  /// Placeholder text shown in the search input to search for Pokémon
+  ///
+  /// In en, this message translates to:
+  /// **'Search Pokémon...'**
+  String get searchPokemon;
+
+  /// Text shown to indicate the type of a Pokémon
+  ///
+  /// In en, this message translates to:
+  /// **'{type, select, bug{Bug} dark{Dark} dragon{Dragon} electric{Electric} fairy{Fairy} fighting{Fighting} fire{Fire} flying{Flying} ghost{Ghost} grass{Grass} ground{Ground} ice{Ice} normal{Normal} poison{Poison} psychic{Psychic} rock{Rock} steel{Steel} water{Water} other{Other}}'**
+  String pokemonType(String type);
 }
 
 class _AppLocalizationsDelegate

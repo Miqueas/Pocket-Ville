@@ -54,4 +54,33 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get noFavoritesSubtitle =>
       'Tap on the heart icon of your favorite Pokémon and they will appear here.';
+
+  @override
+  String get searchPokemon => 'Search Pokémon...';
+
+  @override
+  String pokemonType(String type) {
+    String _temp0 = intl.Intl.selectLogic(type, {
+      'bug': 'Bug',
+      'dark': 'Dark',
+      'dragon': 'Dragon',
+      'electric': 'Electric',
+      'fairy': 'Fairy',
+      'fighting': 'Fighting',
+      'fire': 'Fire',
+      'flying': 'Flying',
+      'ghost': 'Ghost',
+      'grass': 'Grass',
+      'ground': 'Ground',
+      'ice': 'Ice',
+      'normal': 'Normal',
+      'poison': 'Poison',
+      'psychic': 'Psychic',
+      'rock': 'Rock',
+      'steel': 'Steel',
+      'water': 'Water',
+      'other': 'Other',
+    });
+    return '$_temp0';
+  }
 }

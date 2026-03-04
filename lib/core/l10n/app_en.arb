@@ -55,5 +55,18 @@
   "noFavoritesSubtitle": "Tap on the heart icon of your favorite Pokémon and they will appear here.",
   "@noFavoritesSubtitle": {
     "description": "Subtitle shown when there are no favorite Pokémon"
+  },
+  "searchPokemon": "Search Pokémon...",
+  "@searchPokemon": {
+    "description": "Placeholder text shown in the search input to search for Pokémon"
+  },
+  "pokemonType": "{type, select, bug{Bug} dark{Dark} dragon{Dragon} electric{Electric} fairy{Fairy} fighting{Fighting} fire{Fire} flying{Flying} ghost{Ghost} grass{Grass} ground{Ground} ice{Ice} normal{Normal} poison{Poison} psychic{Psychic} rock{Rock} steel{Steel} water{Water} other{Other}}",
+  "@pokemonType": {
+    "description": "Text shown to indicate the type of a Pokémon",
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
   }
 }
