@@ -18,8 +18,8 @@ final class SecondaryButton extends StatelessWidget {
   Widget build(BuildContext context) => BaseButton(
     width: width,
     height: height, 
-    normalColor: HSLColor.fromAHSL(1, 0, 0, .93).toColor(),
-    pressedColor: HSLColor.fromAHSL(1, 0, 0, .84).toColor(),
+    normalColor: const Color(0xFFEEEEEE),
+    pressedColor: const Color(0xFFD6D6D6),
     onPressed: onPressed,
     child: child,
   );

@@ -18,8 +18,8 @@ final class PrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) => BaseButton(
     width: width,
     height: height,
-    normalColor: HSLColor.fromAHSL(1, 208, .79, .51).toColor(),
-    pressedColor: HSLColor.fromAHSL(1, 212, .8, .42).toColor(),
+    normalColor: const Color(0xFF1E88E5),
+    pressedColor: const Color(0xFF1565C0),
     onPressed: onPressed,
     child: child,
   );

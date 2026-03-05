@@ -32,7 +32,7 @@ final class _BaseButtonState extends State<BaseButton> {
       width: widget.width,
       height: widget.height,
       padding: const .symmetric(horizontal: 8, vertical: 16),
-      duration: Duration(milliseconds: 100,),
+      duration: const Duration(milliseconds: 100,),
       decoration: BoxDecoration(
         color: _isPressed ? widget.pressedColor : widget.normalColor,
         borderRadius: .circular(100),

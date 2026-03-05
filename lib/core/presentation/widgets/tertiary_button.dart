@@ -19,7 +19,7 @@ final class TertiaryButton extends StatelessWidget {
     width: width,
     height: height, 
     normalColor: Colors.transparent,
-    pressedColor: HSLColor.fromAHSL(.4, 223, .51, .85).toColor(),
+    pressedColor: const Color(0xFFC5D0EC).withValues(alpha: .4),
     onPressed: onPressed,
     child: child,
   );
