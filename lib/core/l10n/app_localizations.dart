@@ -193,6 +193,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{type, select, bug{Bug} dark{Dark} dragon{Dragon} electric{Electric} fairy{Fairy} fighting{Fighting} fire{Fire} flying{Flying} ghost{Ghost} grass{Grass} ground{Ground} ice{Ice} normal{Normal} poison{Poison} psychic{Psychic} rock{Rock} steel{Steel} water{Water} other{Other}}'**
   String pokemonType(String type);
+
+  /// Text shown in the button to retry an action after an error occurs
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
+
+  /// Text shown in features that are not yet implemented
+  ///
+  /// In en, this message translates to:
+  /// **'Coming Soon!'**
+  String get comingSoonTitle;
+
+  /// Text shown in features that are not yet implemented
+  ///
+  /// In en, this message translates to:
+  /// **'We\'\'re working to bring you this section. Check back later to discover all the new features.'**
+  String get comingSoonSubtitle;
 }
 
 class _AppLocalizationsDelegate

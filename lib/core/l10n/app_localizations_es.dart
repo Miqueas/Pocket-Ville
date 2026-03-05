@@ -82,4 +82,14 @@ class AppLocalizationsEs extends AppLocalizations {
     });
     return '$_temp0';
   }
+
+  @override
+  String get retry => 'Reintentar';
+
+  @override
+  String get comingSoonTitle => '¡Muy pronto disponible!';
+
+  @override
+  String get comingSoonSubtitle =>
+      'Estamos trabajando para traerte esta sección. Vuelve más adelante para descubrir todas las novedades.';
 }
