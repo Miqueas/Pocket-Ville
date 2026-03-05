@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pocket_ville/core/presentation/screens/base_screen.dart';
+import 'package:pocket_ville/core/presentation/screens/base_scaffold.dart';
+import 'package:pocket_ville/core/presentation/widgets/dynamic_svg_asset.dart';
 import 'package:pocket_ville/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:pocket_ville/features/splash/data/models/sparkle.dart';
 import 'package:pocket_ville/features/splash/presentation/widgets/star_sparkle.dart';
@@ -51,29 +51,27 @@ with TickerProviderStateMixin
   }
 
   @override
-  Widget build(BuildContext context) => BaseScreen(child: AnimatedBuilder(
+  Widget build(BuildContext context) => BaseScaffold(body: AnimatedBuilder(
     animation: Listenable.merge([
       _dropController,
       _shakeController,
       _sparkleController,
     ]),
-    builder: (context, child) => Center(
-      child: Stack(
-        alignment: .center,
-        clipBehavior: .none,
-        children: [
-          // Sparkles behind the ball
-          ..._buildSparkles(),
-          // Pokéball
-          Transform.translate(
-            offset: Offset(_shakeAnimation.value * 100, _dropAnimation.value),
-            child: Transform.rotate(
-              angle: _shakeAnimation.value,
-              child: SvgPicture.asset('assets/splash/pokeball.svg',),
-            ),
+    builder: (context, child) => Center(child: Stack(
+      alignment: .center,
+      clipBehavior: .none,
+      children: [
+        // Sparkles behind the ball
+        ..._buildSparkles(),
+        // Pokéball
+        Transform.translate(
+          offset: Offset(_shakeAnimation.value * 100, _dropAnimation.value),
+          child: Transform.rotate(
+            angle: _shakeAnimation.value,
+            child: const DynamicSvgAsset(asset: 'assets/splash/pokeball.svg',),
           ),
-        ],
-      ),
-    ),
+        ),
+      ],
+    ),),
   ),);
 }
