@@ -1,0 +1,48 @@
+[
+  {
+    "label": "Pocket Ville [Debug]",
+    "command": "flutter run --debug",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "reveal_target": "dock",
+    "hide": "on_success",
+    "shell": "system",
+    "show_summary": true,
+    "show_command": true
+  },
+  {
+    "label": "Build Runner Watcher",
+    "command": "dart run build_runner watch -d",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "reveal_target": "dock",
+    "hide": "on_success",
+    "shell": "system",
+    "show_summary": true,
+    "show_command": true
+  },
+  {
+    "label": "Launch Emulator: Pocket Phone (Cold Start)",
+    "command": "flutter emulators --cold --launch Pocket_Phone",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "no_focus",
+    "reveal_target": "dock",
+    "hide": "on_success",
+    "shell": "system",
+    "show_summary": false
+  },
+  {
+    "label": "Launch Emulator: Pocket Tablet (Cold Start)",
+    "command": "flutter emulators --cold --launch Pocket_Tablet",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "no_focus",
+    "reveal_target": "dock",
+    "hide": "on_success",
+    "shell": "system",
+    "show_summary": false
+  },
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "label": "Pocket Ville [Debug]",
+    "type": "flutter",
+    "adapter": "Dart",
+    "program": "lib/main.dart",
+  }
+]
