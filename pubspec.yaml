@@ -7,22 +7,28 @@ environment:
   sdk: ^3.11.0
 
 dependencies:
+  cached_network_image_ce: ^4.6.0
+  dio: ^5.9.1
+  dio_cache_interceptor: ^4.0.5
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: ^3.2.1
-  dio: ^5.9.1
   flutter_svg: ^2.2.3
+  freezed_annotation: ^3.1.0
+  http_cache_hive_store: ^5.0.2
   intl: any
   json_annotation: ^4.11.0
+  native_dio_adapter: ^1.5.1
+  path_provider: ^2.1.5
   riverpod_annotation: ^4.0.2
-  freezed_annotation: ^3.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  mocktail: ^1.0.4
   build_runner: ^2.11.1
   freezed: ^3.2.5
   json_serializable: ^6.13.0
@@ -34,7 +40,55 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/coming-soon-illustration-dark-mode.png
+    - assets/coming-soon-illustration-light-mode.png
+    # Elements icons
+    - assets/icons/bug.svg
+    - assets/icons/dark.svg
+    - assets/icons/dragon.svg
+    - assets/icons/electric.svg
+    - assets/icons/fairy.svg
+    - assets/icons/fighting.svg
+    - assets/icons/fire.svg
+    - assets/icons/flying.svg
+    - assets/icons/ghost.svg
+    - assets/icons/grass.svg
+    - assets/icons/ground.svg
+    - assets/icons/ice.svg
+    - assets/icons/normal.svg
+    - assets/icons/poison.svg
+    - assets/icons/psychic.svg
+    - assets/icons/rock.svg
+    - assets/icons/steel.svg
+    - assets/icons/water.svg
+    # Other icons
+    - assets/icons/house.svg
+    - assets/icons/heart.svg
+    - assets/icons/user.svg
+    - assets/icons/globe.svg
+    - assets/icons/search.svg
+    # Pokéball illustration, used in the splash screen
     - assets/splash/pokeball.svg
+    # All elements illustrations
+    - assets/elements/bug.svg
+    - assets/elements/dark.svg
+    - assets/elements/dragon.svg
+    - assets/elements/electric.svg
+    - assets/elements/fairy.svg
+    - assets/elements/fighting.svg
+    - assets/elements/fire.svg
+    - assets/elements/flying.svg
+    - assets/elements/ghost.svg
+    - assets/elements/grass.svg
+    - assets/elements/ground.svg
+    - assets/elements/ice.svg
+    - assets/elements/normal.svg
+    - assets/elements/poison.svg
+    - assets/elements/psychic.svg
+    - assets/elements/rock.svg
+    - assets/elements/steel.svg
+    - assets/elements/water.svg
+    # Onboarding illustrations
     - assets/onboarding/hilda-dark-mode.svg
     - assets/onboarding/hilda-light-mode.svg
     - assets/onboarding/kid-doctor-dark-mode.svg
