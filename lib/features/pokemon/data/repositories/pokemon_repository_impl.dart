@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
+import 'package:pocket_ville/features/pokemon/data/models/pokemon_item.dart';
 import 'package:pocket_ville/features/pokemon/domain/repositories/pokemon_repository.dart';
 
 final class PokemonRepositoryImpl implements PokemonRepository {
@@ -8,23 +8,28 @@ final class PokemonRepositoryImpl implements PokemonRepository {
   const PokemonRepositoryImpl(this._dio);
 
   @override
-  Future<List<Pokemon>> getPokemonList({int limit = 20, int offset = 0}) async {
+  Future<Map<String, dynamic>> getPokemonData<T>(T idOrName) async {
+    assert(
+      idOrName is int || idOrName is String,
+      '`idOrName` must be int or String'
+    );
+
+    final response = await _dio.get('pokemon/$idOrName');
+    return response.data;
+  }
+
+  @override
+  Future<List<PokemonItem>> getPokemonList({int? limit, int? offset}) async {
     final Response response = await _dio.get(
       'pokemon',
       queryParameters: {
-        'limit': limit,
-        'offset': offset,
+        'limit': ?limit,
+        'offset': ?offset,
       },
     );
 
     final List results = response.data['results'];
 
-    return results.map((e) => Pokemon.fromJson(e)).toList();
-  }
-
-  @override
-  Future<Pokemon> getPokemonDetails(String name) async {
-    final response = await _dio.get('pokemon/$name');
-    return Pokemon.fromJson(response.data);
+    return results.map((e) => PokemonItem.fromJson(e)).toList();
   }
 }
