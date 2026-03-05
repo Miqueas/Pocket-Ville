@@ -7,13 +7,13 @@ final class NavigationTabBarItem extends StatelessWidget {
     required this.icon,
     required this.label,
     required this.active,
-    this.onTap,
+    required this.onTap,
   });
 
   final bool active;
   final String icon;
   final String label;
-  final VoidCallback? onTap;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) => GestureDetector(
@@ -27,10 +27,25 @@ final class NavigationTabBarItem extends StatelessWidget {
           height: 32,
           replacements: switch (active) {
             true => { RegExp(r'#424242'): const Color(0xFF1565C0), },
-            false => null,
+            false => switch (Theme.of(context).brightness) {
+              .dark => { RegExp(r'#424242'): const Color(0xFFE0E0E0), },
+              _ => null,
+            },
           },
         ),
-        Text(label, style: TextStyle(fontWeight: active ? .w700 : .w500,),),
+        Text(
+          label,
+          style: TextStyle(
+            color: switch (active) {
+              true => const Color(0xFF1565C0),
+              false => switch (Theme.of(context).brightness) {
+                .dark => const Color(0xFFC0C0C0),
+                _ => null,
+              },
+            },
+            fontWeight: .w700,
+          ),
+        ),
       ],
     ),
   );
