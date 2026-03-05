@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-final class BaseScreen extends StatelessWidget {
-  const BaseScreen({
+final class BaseScaffold extends StatelessWidget {
+  const BaseScaffold({
     super.key,
     this.appBar,
     this.padding = const .all(16),
     this.withSafeArea = true,
     this.bottomNavigationBar,
-    required this.child,
+    required this.body,
   });
 
   final bool withSafeArea;
-  final Widget child;
+  final Widget body;
   final Widget? bottomNavigationBar;
   final EdgeInsetsGeometry? padding;
   final PreferredSizeWidget? appBar;
@@ -20,30 +20,30 @@ final class BaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     final textColor = switch (brightness) {
-      .dark => Color(0xFFFAFAFA),
-      .light => Color(0xFF16161B),
+      .dark => const Color(0xFFFAFAFA),
+      .light => const Color(0xFF16161B),
     };
 
     final backgroundColor = switch (brightness) {
-      .dark => Color(0xFF16161B),
+      .dark => const Color(0xFF16161B),
       .light => Colors.white,
     };
 
-    var body = child;
+    var child = body;
 
     if (padding != null) {
-      body = Padding(
+      child = Padding(
         padding: padding!,
-        child: body,
+        child: child,
       );
     }
 
-    if (withSafeArea) body = SafeArea(child: body);
+    if (withSafeArea) child = SafeArea(child: child);
 
     return DefaultTextStyle.merge(
       style: TextStyle(color: textColor,),
       child: Scaffold(
-        body: body,
+        body: child,
         appBar: appBar,
         backgroundColor: backgroundColor,
         bottomNavigationBar: bottomNavigationBar,
