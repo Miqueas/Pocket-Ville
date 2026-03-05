@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pocket_ville/core/extensions/gap_extension.dart';
 import 'package:pocket_ville/features/onboarding/presentation/widgets/onboarding_page_indicator_item.dart';
 
 final class OnboardingPageIndicators extends StatefulWidget {
@@ -38,10 +37,10 @@ extends State<OnboardingPageIndicators>
       final page1 = _page.clamp(0.0, 1.0);
 
       return Row(
+        spacing: 8,
         mainAxisAlignment: .center,
         children: [
           OnboardingPageIndicatorItem(progress: page0,),
-          8.w,
           OnboardingPageIndicatorItem(progress: page1,),
         ],
       );

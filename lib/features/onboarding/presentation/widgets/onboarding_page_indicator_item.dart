@@ -10,8 +10,8 @@ final class OnboardingPageIndicatorItem extends StatelessWidget {
 
   final double progress;
 
-  static final _activeColor = HSLColor.fromAHSL(1, 224, .76, .37).toColor();
-  static final _inactiveColor = HSLColor.fromAHSL(.25, 223, .45, .49).toColor();
+  static final _activeColor = const HSLColor.fromAHSL(1, 224, .76, .37).toColor();
+  static final _inactiveColor = const HSLColor.fromAHSL(.25, 223, .45, .49).toColor();
 
   @override
   Widget build(BuildContext context) => Container(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pocket_ville/core/presentation/screens/base_screen.dart';
+import 'package:pocket_ville/core/presentation/screens/base_scaffold.dart';
 import 'package:pocket_ville/core/presentation/widgets/primary_button.dart';
 import 'package:pocket_ville/features/onboarding/presentation/widgets/onboarding_animated_button_text.dart';
 import 'package:pocket_ville/features/onboarding/presentation/widgets/onboarding_page_01.dart';
@@ -23,7 +23,7 @@ final class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => BaseScreen(child: Column(
+  Widget build(BuildContext context) => BaseScaffold(body: Column(
     spacing: 16,
     children: [
       Expanded(child: PageView(
@@ -48,7 +48,7 @@ final class _OnboardingScreenState extends State<OnboardingScreen> {
           }
 
           if (_controller.page! > .5) {
-            Navigator.of(context).pushReplacementNamed('/');
+            Navigator.of(context).pop();
           }
         },
         child: OnboardingAnimatedButtonText(controller: _controller,),
