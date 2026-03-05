@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:pocket_ville/core/api/dio_client.dart';
 import 'package:pocket_ville/core/isolate/background_worker_provider.dart';
 import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
