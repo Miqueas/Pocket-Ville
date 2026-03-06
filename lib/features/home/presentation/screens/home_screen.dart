@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocket_ville/core/extensions/gap.dart';
 import 'package:pocket_ville/core/presentation/widgets/loading.dart';
-import 'package:pocket_ville/features/pokemon/presentation/providers/pokemon_list_provider.dart';
+import 'package:pocket_ville/features/pokemon/presentation/providers/pokemon_listing_provider.dart';
 import 'package:pocket_ville/features/pokemon/presentation/widgets/pokemon_card.dart';
 import 'package:pocket_ville/features/home/presentation/widgets/home_search_field.dart';
 
@@ -11,13 +11,13 @@ final class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pokemonList = ref.watch(pokemonListProvider);
+    final pokemonListing = ref.watch(pokemonListingProvider);
 
     return Column(
       spacing: 16,
       children: [
         const HomeSearchField(),
-        Expanded(child: switch (pokemonList) {
+        Expanded(child: switch (pokemonListing) {
           AsyncValue(:final error?) => Center(child: Text('Error: $error')),
           AsyncValue(:final value?) => NotificationListener<ScrollNotification>(
             onNotification: (notification) {
@@ -25,13 +25,13 @@ final class HomeScreen extends ConsumerWidget {
               final maxScroll = notification.metrics.maxScrollExtent;
           
               if (position >= (maxScroll * .9)) {
-                ref.read(pokemonListProvider.notifier).loadMore();
+                ref.read(pokemonListingProvider.notifier).loadMore();
               }
           
               return false;
             },
             child: ListView.separated(
-              itemCount: value.length + (pokemonList.isLoading ? 1 : 0),
+              itemCount: value.length + (pokemonListing.isLoading ? 1 : 0),
               cacheExtent: 100,
               itemBuilder: (_, index) {
                 if (index >= value.length) {
