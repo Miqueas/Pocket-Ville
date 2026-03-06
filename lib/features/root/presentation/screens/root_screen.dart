@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pocket_ville/core/presentation/screens/base_scaffold.dart';
 import 'package:pocket_ville/core/presentation/widgets/navigation_tab_bar.dart';
 import 'package:pocket_ville/features/favorites/presentation/screens/favorites_screen.dart';
-import 'package:pocket_ville/features/home/presentation/screens/home_screen.dart';
 import 'package:pocket_ville/features/coming_soon/presentation/screens/coming_soon_screen.dart';
+import 'package:pocket_ville/features/home/presentation/screens/home_view.dart';
 
 final class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -17,10 +17,13 @@ final class _RootScreenState extends State<RootScreen> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
+    // withSafeArea: false,
+    // padding: .zero,
     body: IndexedStack(
       index: _pageIndex,
+      clipBehavior: .none,
       children: const [
-        HomeScreen(),
+        HomeView(),
         ComingSoonScreen(),
         FavoritesScreen(),
         ComingSoonScreen(),
