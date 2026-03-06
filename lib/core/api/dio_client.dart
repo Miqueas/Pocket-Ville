@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http_cache_hive_store/http_cache_hive_store.dart';
 import 'package:native_dio_adapter/native_dio_adapter.dart';
 import 'package:path_provider/path_provider.dart';
@@ -11,8 +13,7 @@ part 'dio_client.g.dart';
 Future<Dio> dio(Ref ref) async => await createDioClient();
 
 Future<Dio> createDioClient() async {
-  const baseUrl = 'https://pokeapi.co/api/v2/';
-
+  final baseUrl = dotenv.env['API_URL']!;
   final tempDir = await getTemporaryDirectory();
   final cacheStore = HiveCacheStore(tempDir.path);
   final cacheOptions = CacheOptions(
@@ -33,13 +34,11 @@ Future<Dio> createDioClient() async {
 
   final dio = Dio(dioOptions);
   dio.httpClientAdapter = NativeAdapter();
-  dio.interceptors.addAll([
-    DioCacheInterceptor(options: cacheOptions,),
-    LogInterceptor(
-      request: false,
-      responseBody: true,
-    ),
-  ]);
+  dio.interceptors.add(DioCacheInterceptor(options: cacheOptions));
+
+  // Prevents logging data on production builds, but allows it during
+  // development for debugging purposes
+  if (kDebugMode) dio.interceptors.add(LogInterceptor(responseBody: true));
 
   return dio;
 }
