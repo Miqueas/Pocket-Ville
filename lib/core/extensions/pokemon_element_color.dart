@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pocket_ville/core/enums/pokemon_type.dart';
+import 'package:pocket_ville/core/enums/pokemon_element.dart';
 
-extension PokemonTypeColor on PokemonType {
-  static const _colors = <PokemonType, Color>{
+extension PokemonElementColor on PokemonElement {
+  static const _colors = <PokemonElement, Color>{
     .bug: Color(0xFF43A047),
     .dark: Color(0xFF546E7A),
     .dragon: Color(0xFF00ACC1),
