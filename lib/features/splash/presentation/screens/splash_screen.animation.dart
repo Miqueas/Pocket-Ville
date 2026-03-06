@@ -30,26 +30,44 @@ extension _SplashAnimation on _SplashScreenState {
   }).toList();
 
   Future<void> _startSequence() async {
-    // Phase 1: Drop
+    // Drop animation
     await _dropController.forward();
-    await Future.delayed(const Duration(milliseconds: 200));
+    await Future.delayed(const Duration(milliseconds: 400));
 
-    // Phase 2: Shake
-    await _shakeController.forward();
-    await Future.delayed(const Duration(milliseconds: 200));
+    // Application startup logic
+    final startupFuture = ref.read(startupProvider.future);
+    var startupCompleted = false;
+    startupFuture.then(
+      (_) => startupCompleted = true,
+      onError: (_) => startupCompleted = true,
+    );
 
-    // Phase 3: Sparkles
+    // Shake while app is starting up
+    do {
+      _shakeController.reset();
+      await _shakeController.forward();
+    } while (!startupCompleted);
+
+    // Sparkles
     await _sparkleController.forward();
     await Future.delayed(const Duration(milliseconds: 400));
 
+    final favorites = await ref.read(favoritesProvider.future);
+    final hasFavorites = favorites.isNotEmpty;
+
     if (mounted) {
-      // Fades out to the onboarding screen
+      final targetRoute = hasFavorites ? '/' : '/onboarding';
+      final targetScreen = switch (hasFavorites) {
+        true => const RootScreen(),
+        false => const OnboardingScreen(),
+      };
+
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
-          settings: const RouteSettings(name: '/onboarding'),
+          settings: RouteSettings(name: targetRoute),
           pageBuilder: (_, animation, _) => FadeTransition(
             opacity: animation,
-            child: const OnboardingScreen(),
+            child: targetScreen,
           ),
           transitionDuration: const Duration(milliseconds: 1000),
           transitionsBuilder: (_, animation, _, child) => FadeTransition(
@@ -65,7 +83,7 @@ extension _SplashAnimation on _SplashScreenState {
     // Phase 1: Drop
     _dropController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1,),
+      duration: const Duration(milliseconds: 1400,),
     );
 
     _dropAnimation = Tween<double>(begin: -600, end: 0).animate(
@@ -75,14 +93,46 @@ extension _SplashAnimation on _SplashScreenState {
     // Phase 2: Shake
     _shakeController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2,),
+      duration: const Duration(seconds: 2),
     );
 
     _shakeAnimation = TweenSequence<double>([
+      // Shake
+      TweenSequenceItem(
+        tween: Tween(begin: .0, end: .2).chain(
+          CurveTween(curve: Curves.easeInOut)
+        ),
+        weight: 4,
+      ),
+      TweenSequenceItem(
+        tween: Tween(begin: .2, end: -.2).chain(
+          CurveTween(curve: Curves.easeInOut)
+        ),
+        weight: 4,
+      ),
+      TweenSequenceItem(
+        tween: Tween(begin: -.2, end: .2).chain(
+          CurveTween(curve: Curves.easeInOut)
+        ),
+        weight: 4,
+      ),
+      TweenSequenceItem(
+        tween: Tween(begin: .2, end: -.2).chain(
+          CurveTween(curve: Curves.easeInOut)
+        ),
+        weight: 4,
+      ),
+      TweenSequenceItem(
+        tween: Tween(begin: -.2, end: .0).chain(
+          CurveTween(curve: Curves.easeInOut)
+        ),
+        weight: 4,
+      ),
+
       // Pause
       TweenSequenceItem(
-        tween: Tween(begin: 0, end: 0),
-        weight: 10,
+        tween: Tween<double>(begin: 0, end: 0),
+        weight: 20,
       ),
 
       // Shake
@@ -105,7 +155,13 @@ extension _SplashAnimation on _SplashScreenState {
         weight: 4,
       ),
       TweenSequenceItem(
-        tween: Tween(begin: .2, end: .0).chain(
+        tween: Tween(begin: .2, end: -.2).chain(
+          CurveTween(curve: Curves.easeInOut)
+        ),
+        weight: 4,
+      ),
+      TweenSequenceItem(
+        tween: Tween(begin: -.2, end: .0).chain(
           CurveTween(curve: Curves.easeInOut)
         ),
         weight: 4,
@@ -113,34 +169,8 @@ extension _SplashAnimation on _SplashScreenState {
 
       // Pause
       TweenSequenceItem(
-        tween: Tween(begin: 0, end: 0),
+        tween: Tween<double>(begin: 0, end: 0),
         weight: 20,
-      ),
-
-      // Repeat shake
-      TweenSequenceItem(
-        tween: Tween(begin: .0, end: .2).chain(
-          CurveTween(curve: Curves.easeInOut)
-        ),
-        weight: 4,
-      ),
-      TweenSequenceItem(
-        tween: Tween(begin: .2, end: -.2).chain(
-          CurveTween(curve: Curves.easeInOut)
-        ),
-        weight: 4,
-      ),
-      TweenSequenceItem(
-        tween: Tween(begin: -.2, end: .2).chain(
-          CurveTween(curve: Curves.easeInOut)
-        ),
-        weight: 4,
-      ),
-      TweenSequenceItem(
-        tween: Tween(begin: .2, end: .0).chain(
-          CurveTween(curve: Curves.easeInOut)
-        ),
-        weight: 4,
       ),
     ]).animate(_shakeController);
 

@@ -1,9 +1,13 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocket_ville/core/presentation/screens/base_scaffold.dart';
 import 'package:pocket_ville/core/presentation/widgets/dynamic_svg_asset.dart';
+import 'package:pocket_ville/features/favorites/presentation/providers/favorites_provider.dart';
 import 'package:pocket_ville/features/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:pocket_ville/features/root/presentation/screens/root_screen.dart';
 import 'package:pocket_ville/features/splash/data/models/sparkle.dart';
+import 'package:pocket_ville/features/splash/presentation/providers/startup_provider.dart';
 import 'package:pocket_ville/features/splash/presentation/widgets/star_sparkle.dart';
 
 // Logic behind the animation are in this file to improve readability. Check it
@@ -11,15 +15,15 @@ import 'package:pocket_ville/features/splash/presentation/widgets/star_sparkle.d
 // it.
 part 'splash_screen.animation.dart';
 
-final class SplashScreen extends StatefulWidget {
+final class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
 final class _SplashScreenState
-extends State<SplashScreen>
+extends ConsumerState<SplashScreen>
 with TickerProviderStateMixin
 {
   late final AnimationController _dropController;
