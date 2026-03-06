@@ -3,11 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocket_ville/core/l10n/app_localizations.dart';
-import 'package:pocket_ville/features/details/presentation/screens/details_screen.dart';
-import 'package:pocket_ville/features/onboarding/presentation/screens/onboarding_screen.dart';
-import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
+import 'package:pocket_ville/core/navigation/app_router.dart';
 import 'package:pocket_ville/features/root/presentation/screens/root_screen.dart';
-import 'package:pocket_ville/features/splash/presentation/screens/splash_screen.dart';
 
 void main() async {
   await dotenv.load();
@@ -15,12 +12,7 @@ void main() async {
 }
 
 final class PocketVilleApp extends StatelessWidget {
-  const PocketVilleApp({
-    super.key,
-    this.home,
-  });
-
-  final Widget? home;
+  const PocketVilleApp({ super.key, });
 
   ThemeData _buildTheme(Color seedColor, Brightness brightness) {
     final base = ThemeData.from(
@@ -48,30 +40,15 @@ final class PocketVilleApp extends StatelessWidget {
       systemNavigationBarIconBrightness: .dark,
     ),
     child: MaterialApp(
-      home: home,
+      home: const RootScreen(),
       title: 'Pocket Ville',
       theme: _buildTheme(Colors.blue, .light),
       themeMode: .light,
+      initialRoute: AppRouter.splash,
+      onGenerateRoute: AppRouter.onGenerateRoute,
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       debugShowCheckedModeBanner: false,
-      initialRoute: '/splash',
-      routes: {
-        '/splash': (_) => const SplashScreen(),
-        '/onboarding': (_) => const OnboardingScreen(),
-        '/': (_) => const RootScreen(),
-      },
-      onGenerateRoute: (settings) {
-        if (settings.name == '/details') {
-          final pokemon = settings.arguments as Pokemon;
-    
-          return MaterialPageRoute(
-            builder: (_) => DetailsScreen(pokemon: pokemon),
-          );
-        }
-    
-        return null;
-      },
     ),
   );
 }
