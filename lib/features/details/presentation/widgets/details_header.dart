@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pocket_ville/core/extensions/pokemon_element_color.dart';
 import 'package:pocket_ville/features/details/presentation/painters/details_element_background_painter.dart';
+import 'package:pocket_ville/features/details/presentation/widgets/details_header_favorite_button.dart';
 import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
 
 final class DetailsHeader extends StatelessWidget {
@@ -90,17 +91,7 @@ final class DetailsHeader extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              Padding(
-                padding: const .symmetric(horizontal: 8),
-                child: Icon(
-                  Icons.favorite_outline_rounded,
-                  size: 32,
-                  color: switch (elementColor.computeLuminance() < .5) {
-                    true => Colors.white,
-                    false => null,
-                  },
-                ),
-              ),
+              DetailsHeaderFavoriteButton(pokemon: pokemon,),
             ],),
           ),
         ],
