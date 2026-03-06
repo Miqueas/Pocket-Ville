@@ -1,11 +1,13 @@
 import 'package:cached_network_image_ce/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pocket_ville/core/extensions/pokemon_element_color.dart';
-import 'package:pocket_ville/core/presentation/widgets/favorite_button.dart';
+import 'package:pocket_ville/features/favorites/presentation/providers/favorites_provider.dart';
 import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
+import 'package:pocket_ville/features/pokemon/presentation/widgets/pokemon_card_favorite_button.dart';
 
-final class PokemonCardEndSection extends StatelessWidget {
+final class PokemonCardEndSection extends ConsumerWidget {
   const PokemonCardEndSection({
     super.key,
     required this.pokemon,
@@ -14,7 +16,8 @@ final class PokemonCardEndSection extends StatelessWidget {
   final Pokemon pokemon;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final favorites = ref.watch(favoritesProvider);
     final mainElement = pokemon.types.first.element;
 
     return Container(
@@ -50,9 +53,14 @@ final class PokemonCardEndSection extends StatelessWidget {
           Positioned(
             top: 2,
             right: -10,
-            child: FavoriteButton(
-              favorited: false,
-              onPressed: () {},
+            child: PokemonCardFavoriteButton(
+              favorited: switch (favorites) {
+                AsyncValue(:final value?) => value.contains(pokemon.id),
+                _ => false,
+              },
+              onPressed: () {
+                ref.read(favoritesProvider.notifier).toggle(pokemon.id);
+              },
             ),
           ),
         ],
