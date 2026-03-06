@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:pocket_ville/core/enums/pokemon_type.dart';
-import 'package:pocket_ville/core/extensions/pokemon_type_color.dart';
+import 'package:pocket_ville/core/enums/pokemon_element.dart';
+import 'package:pocket_ville/core/extensions/pokemon_element_color.dart';
 import 'package:pocket_ville/core/l10n/app_localizations.dart';
 import 'package:pocket_ville/core/presentation/widgets/dynamic_svg_asset.dart';
 
-final class PokemonTypePill extends StatelessWidget {
-  const PokemonTypePill({
+final class PokemonElementPill extends StatelessWidget {
+  const PokemonElementPill({
     super.key,
-    required this.type,
+    required this.element,
   });
 
-  final PokemonType type;
+  final PokemonElement element;
 
   @override
   Widget build(BuildContext context) => Container(
     padding: const EdgeInsets.all(6).copyWith(right: 12,),
     decoration: BoxDecoration(
-      color: type.color,
+      color: element.color,
       borderRadius: BorderRadius.circular(32),
     ),
     child: Row(
@@ -30,15 +30,15 @@ final class PokemonTypePill extends StatelessWidget {
             shape: BoxShape.circle,
           ),
           child: DynamicSvgAsset(
-            asset: 'assets/icons/${type.name}.svg',
-            replacements: { RegExp(r'#FAFAFA'): type.color, },
+            asset: 'assets/icons/${element.name}.svg',
+            replacements: { RegExp(r'#FAFAFA'): element.color, },
           ),
         ),
         Text(
-          AppLocalizations.of(context)!.pokemonType(type.name),
+          AppLocalizations.of(context)!.pokemonType(element.name),
           style: TextStyle(
             // Ensures to use the right text color based on the background color
-            color: switch (type.color.computeLuminance() < .5) {
+            color: switch (element.color.computeLuminance() < .5) {
               true => Colors.white,
               false => const Color(0xFF121212),
             },
