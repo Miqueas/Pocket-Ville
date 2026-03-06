@@ -61,8 +61,13 @@ final class PokemonRepositoryImpl implements PokemonRepository {
 ''';
 
   static const _getPokemonByIdsQuery = '''
-query GetPokemonByIds(\$ids: [Int!]!) {
-  pokemons: pokemon(where: {id: {_in: \$ids}}) {
+query GetPokemonByIds(\$ids: [Int!]!, \$limit: Int, \$offset: Int) {
+  pokemons: pokemon(
+    where: {id: {_in: \$ids}},
+    limit: \$limit,
+    offset: \$offset
+    order_by: {id: asc}
+  ) {
 $_dataLayout
   }
 }
@@ -78,12 +83,20 @@ $_dataLayout
 
 
   @override
-  Future<List<Pokemon>> getPokemonByIds(Iterable<int> ids) async {
+  Future<List<Pokemon>> getPokemonByIds({
+    required Iterable<int> ids,
+    int? limit,
+    int? offset,
+  }) async {
     final response = await _dio.post(
       '/v1beta2',
       data: {
         'query': _getPokemonByIdsQuery,
-        'variables': { 'ids': ids.toList(), },
+        'variables': {
+          'ids': ids.toList(),
+          'limit': ?limit,
+          'offset': ?offset,
+        },
       },
     );
 
