@@ -27,6 +27,7 @@ final class PokemonCard extends StatelessWidget {
         arguments: pokemon,
       ),
       child: Container(
+        clipBehavior: .antiAlias,
         decoration: BoxDecoration(
           color: mainElement.color.withValues(alpha: .5),
           borderRadius: BorderRadius.circular(16),
