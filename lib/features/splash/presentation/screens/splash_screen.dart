@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pocket_ville/core/navigation/app_router.dart';
 import 'package:pocket_ville/core/presentation/screens/base_scaffold.dart';
 import 'package:pocket_ville/core/presentation/widgets/dynamic_svg_asset.dart';
 import 'package:pocket_ville/features/favorites/presentation/providers/favorites_provider.dart';

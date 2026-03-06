@@ -56,26 +56,30 @@ extension _SplashAnimation on _SplashScreenState {
     final hasFavorites = favorites.isNotEmpty;
 
     if (mounted) {
-      final targetRoute = hasFavorites ? '/' : '/onboarding';
+      final targetRoute = hasFavorites ? AppRouter.home : AppRouter.onboarding;
       final targetScreen = switch (hasFavorites) {
         true => const RootScreen(),
         false => const OnboardingScreen(),
       };
 
-      Navigator.of(context).pushReplacement(
-        PageRouteBuilder(
-          settings: RouteSettings(name: targetRoute),
-          pageBuilder: (_, animation, _) => FadeTransition(
-            opacity: animation,
-            child: targetScreen,
+      if (targetRoute == AppRouter.home) {
+        Navigator.of(context).pop();
+      } else {
+        Navigator.of(context).pushReplacement(
+          PageRouteBuilder(
+            settings: RouteSettings(name: targetRoute),
+            pageBuilder: (_, animation, _) => FadeTransition(
+              opacity: animation,
+              child: targetScreen,
+            ),
+            transitionDuration: const Duration(milliseconds: 1000),
+            transitionsBuilder: (_, animation, _, child) => FadeTransition(
+              opacity: animation,
+              child: child,
+            ),
           ),
-          transitionDuration: const Duration(milliseconds: 1000),
-          transitionsBuilder: (_, animation, _, child) => FadeTransition(
-            opacity: animation,
-            child: child,
-          ),
-        ),
-      );
+        );
+      }
     }
   }
 
