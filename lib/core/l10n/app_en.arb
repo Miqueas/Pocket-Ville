@@ -80,5 +80,25 @@
   "comingSoonSubtitle": "We''re working to bring you this section. Check back later to discover all the new features.",
   "@comingSoonSubtitle": {
     "description": "Text shown in features that are not yet implemented"
+  },
+  "weight": "WEIGHT",
+  "@weight": {
+    "description": "Used in the Pokémon details screen"
+  },
+  "height": "HEIGHT",
+  "@height": {
+    "description": "Used in the Pokémon details screen"
+  },
+  "category": "CATEGORY",
+  "@category": {
+    "description": "Used in the Pokémon details screen"
+  },
+  "ability": "ABILITY",
+  "@ability": {
+    "description": "Used in the Pokémon details screen"
+  },
+  "weaknesses": "Weaknesses",
+  "@weaknesses": {
+    "description": "Used in the Pokémon details screen to indicate the weaknesses of a Pokémon"
   }
 }

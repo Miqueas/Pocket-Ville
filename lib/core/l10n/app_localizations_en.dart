@@ -93,4 +93,19 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get comingSoonSubtitle =>
       'We\'re working to bring you this section. Check back later to discover all the new features.';
+
+  @override
+  String get weight => 'WEIGHT';
+
+  @override
+  String get height => 'HEIGHT';
+
+  @override
+  String get category => 'CATEGORY';
+
+  @override
+  String get ability => 'ABILITY';
+
+  @override
+  String get weaknesses => 'Weaknesses';
 }

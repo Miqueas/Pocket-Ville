@@ -92,4 +92,19 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get comingSoonSubtitle =>
       'Estamos trabajando para traerte esta sección. Vuelve más adelante para descubrir todas las novedades.';
+
+  @override
+  String get weight => 'PESO';
+
+  @override
+  String get height => 'ALTURA';
+
+  @override
+  String get category => 'CATEGORÍA';
+
+  @override
+  String get ability => 'HABILIDAD';
+
+  @override
+  String get weaknesses => 'Debilidades';
 }

@@ -211,6 +211,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'We\'\'re working to bring you this section. Check back later to discover all the new features.'**
   String get comingSoonSubtitle;
+
+  /// Used in the Pokémon details screen
+  ///
+  /// In en, this message translates to:
+  /// **'WEIGHT'**
+  String get weight;
+
+  /// Used in the Pokémon details screen
+  ///
+  /// In en, this message translates to:
+  /// **'HEIGHT'**
+  String get height;
+
+  /// Used in the Pokémon details screen
+  ///
+  /// In en, this message translates to:
+  /// **'CATEGORY'**
+  String get category;
+
+  /// Used in the Pokémon details screen
+  ///
+  /// In en, this message translates to:
+  /// **'ABILITY'**
+  String get ability;
+
+  /// Used in the Pokémon details screen to indicate the weaknesses of a Pokémon
+  ///
+  /// In en, this message translates to:
+  /// **'Weaknesses'**
+  String get weaknesses;
 }
 
 class _AppLocalizationsDelegate
