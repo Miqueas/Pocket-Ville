@@ -42,11 +42,14 @@ final class BaseScaffold extends StatelessWidget {
 
     return DefaultTextStyle.merge(
       style: TextStyle(color: textColor,),
-      child: Scaffold(
-        body: child,
-        appBar: appBar,
-        backgroundColor: backgroundColor,
-        bottomNavigationBar: bottomNavigationBar,
+      child: ScrollConfiguration(
+        behavior: ScrollConfiguration.of(context).copyWith(overscroll: false,),
+        child: Scaffold(
+          body: child,
+          appBar: appBar,
+          backgroundColor: backgroundColor,
+          bottomNavigationBar: bottomNavigationBar,
+        ),
       ),
     );
   }
