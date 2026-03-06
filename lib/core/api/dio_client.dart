@@ -10,10 +10,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'dio_client.g.dart';
 
 @riverpod
-Future<Dio> dio(Ref ref) async => await createDioClient();
+Future<Dio> dio(Ref ref) async => await createDioClient(dotenv.env['API_URL']!);
 
-Future<Dio> createDioClient() async {
-  final baseUrl = dotenv.env['API_URL']!;
+Future<Dio> createDioClient(String baseUrl) async {
   final tempDir = await getTemporaryDirectory();
   final cacheStore = HiveCacheStore(tempDir.path);
   final cacheOptions = CacheOptions(
