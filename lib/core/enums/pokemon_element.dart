@@ -1,4 +1,4 @@
-enum PokemonType {
+enum PokemonElement {
   bug,
   dark,
   dragon,
@@ -18,7 +18,7 @@ enum PokemonType {
   steel,
   water;
 
-  static PokemonType fromString(String value) => switch (value) {
+  static PokemonElement fromString(String value) => switch (value) {
     'bug' => bug,
     'dark' => dark,
     'dragon' => dragon,
