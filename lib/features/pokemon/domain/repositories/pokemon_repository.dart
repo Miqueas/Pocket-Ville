@@ -1,6 +1,5 @@
-import 'package:pocket_ville/features/pokemon/data/models/pokemon_item.dart';
+import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
 
 abstract class PokemonRepository {
-  Future<Map<String, dynamic>> getPokemonData<T>(T idOrName);
-  Future<List<PokemonItem>> getPokemonList({int? limit, int? offset});
+  Future<List<Pokemon>> getPokemons({int? limit, int? offset});
 }
