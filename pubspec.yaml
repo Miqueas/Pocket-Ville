@@ -12,9 +12,11 @@ dependencies:
   dio_cache_interceptor: ^4.0.5
   flutter:
     sdk: flutter
+  flutter_dotenv: ^6.0.0
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: ^3.2.1
+  flutter_secure_storage: ^10.0.0
   flutter_svg: ^2.2.3
   freezed_annotation: ^3.1.0
   http_cache_hive_store: ^5.0.2
@@ -41,10 +43,11 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/coming-soon-illustration-dark-mode.png
+    - .env
     - assets/coming-soon-illustration-light-mode.png
     # Elements icons
     - assets/icons/bug.svg
+    - assets/icons/category.svg
     - assets/icons/dark.svg
     - assets/icons/dragon.svg
     - assets/icons/electric.svg
@@ -55,13 +58,16 @@ flutter:
     - assets/icons/ghost.svg
     - assets/icons/grass.svg
     - assets/icons/ground.svg
+    - assets/icons/height.svg
     - assets/icons/ice.svg
     - assets/icons/normal.svg
     - assets/icons/poison.svg
+    - assets/icons/pokeball.svg
     - assets/icons/psychic.svg
     - assets/icons/rock.svg
     - assets/icons/steel.svg
     - assets/icons/water.svg
+    - assets/icons/weight.svg
     # Other icons
     - assets/icons/house.svg
     - assets/icons/heart.svg
