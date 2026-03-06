@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:pocket_ville/core/extensions/gap.dart';
 import 'package:pocket_ville/core/extensions/pokemon_element_color.dart';
 import 'package:pocket_ville/core/l10n/app_localizations.dart';
-import 'package:pocket_ville/core/presentation/screens/base_scaffold.dart';
 import 'package:pocket_ville/features/details/presentation/widgets/details_feature.dart';
 import 'package:pocket_ville/features/details/presentation/widgets/details_header.dart';
 import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
@@ -82,7 +81,7 @@ final class _DetailsScreenState extends State<DetailsScreen> {
           false => .dark,
         },
       ),
-      child: BaseScaffold(body: CustomScrollView(
+      child: CustomScrollView(
         clipBehavior: .none,
         controller: _scrollController,
         slivers: [
@@ -197,7 +196,7 @@ final class _DetailsScreenState extends State<DetailsScreen> {
             ],
           ),),
         ],
-      ),),
+      ),
     );
   }
 }
