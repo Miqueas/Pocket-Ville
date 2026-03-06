@@ -44,6 +44,7 @@ flutter:
 
   assets:
     - .env
+    - assets/magikarp.png
     - assets/coming-soon-illustration-light-mode.png
     # Elements icons
     - assets/icons/bug.svg
