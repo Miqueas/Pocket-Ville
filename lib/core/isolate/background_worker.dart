@@ -70,7 +70,7 @@ final class BackgroundWorker {
     ));
 
     final result = await responsePort.first;
-    if (result is Error || result is Exception) throw result.error;
+    if (result is Error || result is Exception) throw result;
     return result as R;
   }
 
