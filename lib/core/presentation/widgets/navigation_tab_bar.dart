@@ -21,13 +21,13 @@ final class NavigationTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final padding = MediaQuery.paddingOf(context);
     final brightness = Theme.of(context).brightness;
     final viewInsets = MediaQuery.viewInsetsOf(context);
-    final viewPadding = MediaQuery.paddingOf(context);
 
     return Container(
       padding: const EdgeInsets.all(16).copyWith(
-        bottom: viewInsets.bottom + viewPadding.bottom + 16,
+        bottom: viewInsets.bottom + padding.bottom + 16,
       ),
       decoration: BoxDecoration(
         color: switch (brightness) {
