@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'pokemons_provider.dart';
+part of 'pokemon_listing_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -9,33 +9,33 @@ part of 'pokemons_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(Pokemons)
-final pokemonsProvider = PokemonsProvider._();
+@ProviderFor(PokemonListing)
+final pokemonListingProvider = PokemonListingProvider._();
 
-final class PokemonsProvider
-    extends $AsyncNotifierProvider<Pokemons, List<Pokemon>> {
-  PokemonsProvider._()
+final class PokemonListingProvider
+    extends $AsyncNotifierProvider<PokemonListing, List<Pokemon>> {
+  PokemonListingProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'pokemonsProvider',
+        name: r'pokemonListingProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$pokemonsHash();
+  String debugGetCreateSourceHash() => _$pokemonListingHash();
 
   @$internal
   @override
-  Pokemons create() => Pokemons();
+  PokemonListing create() => PokemonListing();
 }
 
-String _$pokemonsHash() => r'25b030f18aadc320af2c4acaf72d693d7278ac6a';
+String _$pokemonListingHash() => r'2ac4c33bb007264755c8db4aa050e51d91240f9b';
 
-abstract class _$Pokemons extends $AsyncNotifier<List<Pokemon>> {
+abstract class _$PokemonListing extends $AsyncNotifier<List<Pokemon>> {
   FutureOr<List<Pokemon>> build();
   @$mustCallSuper
   @override
