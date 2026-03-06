@@ -3,7 +3,7 @@ import 'package:pocket_ville/core/presentation/screens/base_scaffold.dart';
 import 'package:pocket_ville/core/presentation/widgets/navigation_tab_bar.dart';
 import 'package:pocket_ville/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:pocket_ville/features/home/presentation/screens/home_screen.dart';
-import 'package:pocket_ville/features/regions/presentation/screens/regions_screen.dart';
+import 'package:pocket_ville/features/coming_soon/presentation/screens/coming_soon_screen.dart';
 
 final class RootScreen extends StatefulWidget {
   const RootScreen({super.key});
@@ -21,9 +21,9 @@ final class _RootScreenState extends State<RootScreen> {
       index: _pageIndex,
       children: const [
         HomeScreen(),
-        RegionsScreen(),
+        ComingSoonScreen(),
         FavoritesScreen(),
-        Placeholder(),
+        ComingSoonScreen(),
       ],
     ),
     bottomNavigationBar: NavigationTabBar(
