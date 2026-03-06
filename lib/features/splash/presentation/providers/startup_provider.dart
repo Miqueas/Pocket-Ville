@@ -13,6 +13,8 @@ Future<void> startup(Ref ref) async {
   // Load favorites and first page of pokemon data concurrently
   await Future.wait([
     ref.read(favoritesProvider.future),
-    ref.read(pokemonListingProvider.future),
+    ref
+      .read(pokemonListingProvider.future)
+      .timeout(const Duration(seconds: 4)),
   ]);
 }
