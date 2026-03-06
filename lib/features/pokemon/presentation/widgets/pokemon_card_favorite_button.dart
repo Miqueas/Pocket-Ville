@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-final class FavoriteButton extends StatelessWidget {
-  const FavoriteButton({
+final class PokemonCardFavoriteButton extends StatelessWidget {
+  const PokemonCardFavoriteButton({
     super.key,
     required this.favorited,
     required this.onPressed,
