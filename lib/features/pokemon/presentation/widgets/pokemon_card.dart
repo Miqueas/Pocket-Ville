@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pocket_ville/core/extensions/gap.dart';
 import 'package:pocket_ville/core/extensions/pokemon_element_color.dart';
 import 'package:pocket_ville/core/l10n/app_localizations.dart';
+import 'package:pocket_ville/core/navigation/home_routes.dart';
 import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
 import 'package:pocket_ville/features/pokemon/presentation/widgets/pokemon_card_end_section.dart';
 import 'package:pocket_ville/features/pokemon/presentation/widgets/pokemon_element_pill.dart';
@@ -22,10 +23,7 @@ final class PokemonCard extends StatelessWidget {
     final mainElement = pokemon.types.first.element;
 
     return GestureDetector(
-      onTap: () => Navigator.of(context).pushNamed(
-        '/details',
-        arguments: pokemon,
-      ),
+      onTap: () => Navigator.of(context).pushDetails(pokemon),
       child: Container(
         clipBehavior: .antiAlias,
         decoration: BoxDecoration(
