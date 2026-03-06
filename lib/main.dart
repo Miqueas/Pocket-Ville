@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pocket_ville/core/l10n/app_localizations.dart';
-import 'package:pocket_ville/features/home/presentation/screens/home_screen.dart';
+import 'package:pocket_ville/features/details/presentation/screens/details_screen.dart';
 import 'package:pocket_ville/features/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
 import 'package:pocket_ville/features/root/presentation/screens/root_screen.dart';
 import 'package:pocket_ville/features/splash/presentation/screens/splash_screen.dart';
 
-void main() => runApp(const ProviderScope(child: PocketVilleApp(),),);
+void main() async {
+  await dotenv.load();
+  runApp(const ProviderScope(child: PocketVilleApp(),),);
+}
 
 final class PocketVilleApp extends StatelessWidget {
   const PocketVilleApp({
@@ -28,7 +33,7 @@ final class PocketVilleApp extends StatelessWidget {
     );
 
     return base.copyWith(
-      textTheme: base.textTheme.apply(fontFamily: 'Poppins'),
+      textTheme: base.textTheme.apply(fontFamily: 'Poppins',),
       brightness: brightness,
     );
   }
@@ -46,8 +51,7 @@ final class PocketVilleApp extends StatelessWidget {
       home: home,
       title: 'Pocket Ville',
       theme: _buildTheme(Colors.blue, .light),
-      themeMode: .system,
-      darkTheme: _buildTheme(Colors.blue, .dark),
+      themeMode: .light,
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       debugShowCheckedModeBanner: false,
@@ -56,6 +60,17 @@ final class PocketVilleApp extends StatelessWidget {
         '/splash': (_) => const SplashScreen(),
         '/onboarding': (_) => const OnboardingScreen(),
         '/': (_) => const RootScreen(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/details') {
+          final pokemon = settings.arguments as Pokemon;
+    
+          return MaterialPageRoute(
+            builder: (_) => DetailsScreen(pokemon: pokemon),
+          );
+        }
+    
+        return null;
       },
     ),
   );
