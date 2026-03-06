@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pocket_ville/core/extensions/gap.dart';
 import 'package:pocket_ville/core/l10n/app_localizations.dart';
 
-final class RegionsScreen extends StatelessWidget {
-  const RegionsScreen({
-    super.key,
-  });
+final class ComingSoonScreen extends StatelessWidget {
+  const ComingSoonScreen({ super.key, });
 
   @override
   Widget build(BuildContext context) {
