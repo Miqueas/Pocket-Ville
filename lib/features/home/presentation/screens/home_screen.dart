@@ -19,33 +19,28 @@ final class HomeScreen extends ConsumerWidget {
         const HomeSearchField(),
         Expanded(child: switch (pokemonList) {
           AsyncValue(:final error?) => Center(child: Text('Error: $error')),
-          AsyncValue(:final value?) => ScrollConfiguration(
-            behavior: ScrollConfiguration.of(context).copyWith(
-              overscroll: false,
-            ),
-            child: NotificationListener<ScrollNotification>(
-              onNotification: (notification) {
-                final position = notification.metrics.pixels;
-                final maxScroll = notification.metrics.maxScrollExtent;
-
-                if (position >= (maxScroll * .9)) {
-                  ref.read(pokemonListProvider.notifier).loadMore();
+          AsyncValue(:final value?) => NotificationListener<ScrollNotification>(
+            onNotification: (notification) {
+              final position = notification.metrics.pixels;
+              final maxScroll = notification.metrics.maxScrollExtent;
+          
+              if (position >= (maxScroll * .9)) {
+                ref.read(pokemonListProvider.notifier).loadMore();
+              }
+          
+              return false;
+            },
+            child: ListView.separated(
+              itemCount: value.length + (pokemonList.isLoading ? 1 : 0),
+              cacheExtent: 100,
+              itemBuilder: (_, index) {
+                if (index >= value.length) {
+                  return const Center(child: Loading(),);
                 }
-
-                return false;
+          
+                return PokemonCard(pokemon: value[index],);
               },
-              child: ListView.separated(
-                itemCount: value.length + (pokemonList.isLoading ? 1 : 0),
-                cacheExtent: 100,
-                itemBuilder: (_, index) {
-                  if (index >= value.length) {
-                    return const Center(child: Loading(),);
-                  }
-
-                  return PokemonCard(pokemon: value[index],);
-                },
-                separatorBuilder: (_, _) => 12.h,
-              ),
+              separatorBuilder: (_, _) => 12.h,
             ),
           ),
           _ => const Center(child: Loading(),),
