@@ -8,9 +8,18 @@ part of 'background_worker_provider.dart';
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
+/// Provider for [BackgroundWorker]. This allows to keep a [BackgroundWorker]
+/// alive during the execution of the app and dispose it when it's no longer
+/// needed. It's done this way to prevent setting up new isolates every time a
+/// task needs to be executed on the background, which can be expensive.
 
 @ProviderFor(backgroundWorker)
 final backgroundWorkerProvider = BackgroundWorkerProvider._();
+
+/// Provider for [BackgroundWorker]. This allows to keep a [BackgroundWorker]
+/// alive during the execution of the app and dispose it when it's no longer
+/// needed. It's done this way to prevent setting up new isolates every time a
+/// task needs to be executed on the background, which can be expensive.
 
 final class BackgroundWorkerProvider
     extends
@@ -20,6 +29,10 @@ final class BackgroundWorkerProvider
           FutureOr<BackgroundWorker>
         >
     with $FutureModifier<BackgroundWorker>, $FutureProvider<BackgroundWorker> {
+  /// Provider for [BackgroundWorker]. This allows to keep a [BackgroundWorker]
+  /// alive during the execution of the app and dispose it when it's no longer
+  /// needed. It's done this way to prevent setting up new isolates every time a
+  /// task needs to be executed on the background, which can be expensive.
   BackgroundWorkerProvider._()
     : super(
         from: null,
