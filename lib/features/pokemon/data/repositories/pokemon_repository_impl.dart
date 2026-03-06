@@ -3,13 +3,11 @@ import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
 import 'package:pocket_ville/features/pokemon/domain/repositories/pokemon_repository.dart';
 
 final class PokemonRepositoryImpl implements PokemonRepository {
-  const PokemonRepositoryImpl(this._dio);
-
   final Dio _dio;
 
-  static const _gqlQuery = '''
-query ListPokemon(\$limit: Int, \$offset: Int) {
-  pokemons: pokemon(limit: \$limit, offset: \$offset, order_by: {id: asc}) {
+  const PokemonRepositoryImpl(this._dio);
+
+  static const _dataLayout = '''
     id
     name
     height
@@ -51,6 +49,7 @@ query ListPokemon(\$limit: Int, \$offset: Int) {
       descriptions: pokemonspeciesflavortexts(
         where: {language_id: {_in: [7, 9]}}
         order_by: {version_id: desc}
+        limit: 4
       ) {
         version_id
         flavor_text
@@ -59,16 +58,49 @@ query ListPokemon(\$limit: Int, \$offset: Int) {
         }
       }
     }
+''';
+
+  static const _getPokemonByIdsQuery = '''
+query GetPokemonByIds(\$ids: [Int!]!) {
+  pokemons: pokemon(where: {id: {_in: \$ids}}) {
+$_dataLayout
   }
 }
 ''';
 
+  static const _getPokemonListingQuery = '''
+query GetPokemonListing(\$limit: Int, \$offset: Int) {
+  pokemons: pokemon(limit: \$limit, offset: \$offset, order_by: {id: asc}) {
+$_dataLayout
+  }
+}
+''';
+
+
   @override
-  Future<List<Pokemon>> getPokemons({int? limit, int? offset}) async {
+  Future<List<Pokemon>> getPokemonByIds(Iterable<int> ids) async {
     final response = await _dio.post(
       '/v1beta2',
       data: {
-        'query': _gqlQuery,
+        'query': _getPokemonByIdsQuery,
+        'variables': { 'ids': ids.toList(), },
+      },
+    );
+
+    final pokemons = response.data['data']['pokemons']
+      .map((pokemon) => Pokemon.fromJson(pokemon))
+      .toList()
+      .cast<Pokemon>();
+
+    return pokemons;
+  }
+
+  @override
+  Future<List<Pokemon>> getPokemonListing({int? limit, int? offset}) async {
+    final response = await _dio.post(
+      '/v1beta2',
+      data: {
+        'query': _getPokemonListingQuery,
         'variables': {
           'limit': ?limit,
           'offset': ?offset,
