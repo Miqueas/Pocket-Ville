@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pocket_ville/core/presentation/screens/base_scaffold.dart';
 import 'package:pocket_ville/core/presentation/widgets/navigation_tab_bar.dart';
+import 'package:pocket_ville/features/favorites/presentation/screens/favorites_screen.dart';
 import 'package:pocket_ville/features/home/presentation/screens/home_screen.dart';
 import 'package:pocket_ville/features/regions/presentation/screens/regions_screen.dart';
 
@@ -21,7 +22,7 @@ final class _RootScreenState extends State<RootScreen> {
       children: const [
         HomeScreen(),
         RegionsScreen(),
-        Placeholder(),
+        FavoritesScreen(),
         Placeholder(),
       ],
     ),
