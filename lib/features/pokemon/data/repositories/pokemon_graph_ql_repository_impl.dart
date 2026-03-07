@@ -2,10 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
 import 'package:pocket_ville/features/pokemon/domain/repositories/pokemon_repository.dart';
 
-final class PokemonRepositoryImpl implements PokemonRepository {
+final class PokemonGraphQLRepository implements PokemonRepository {
   final Dio _dio;
 
-  const PokemonRepositoryImpl(this._dio);
+  const PokemonGraphQLRepository(this._dio);
 
   static const _dataLayout = '''
     id
@@ -80,6 +80,13 @@ $_dataLayout
   }
 }
 ''';
+
+  @override
+  Future<List<Pokemon>> searchPokemon({
+    required String query,
+    int? limit,
+    int? offset,
+  }) async => [];
 
 
   @override
