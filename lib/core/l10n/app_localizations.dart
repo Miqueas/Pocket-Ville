@@ -265,6 +265,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cancel'**
   String get cancel;
+
+  /// Used in the details screen
+  ///
+  /// In en, this message translates to:
+  /// **'GENDER'**
+  String get gender;
 }
 
 class _AppLocalizationsDelegate

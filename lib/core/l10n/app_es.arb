@@ -116,5 +116,9 @@
   "cancel": "Cancelar",
   "@cancel": {
     "description": "Home filter bottom sheet cancel button text"
+  },
+  "gender": "GÉNERO",
+  "@gender": {
+    "description": "Used in the details screen"
   }
 }
