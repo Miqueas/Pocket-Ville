@@ -19,8 +19,26 @@ final class PokemonGraphQLRepository implements PokemonRepository {
     types: pokemontypes(order_by: {id: asc}) {
       type {
         name
-        weaknesses: TypeefficaciesByTargetTypeId(where: {damage_factor: {_gt: 100}}) {
+        weaknesses: TypeefficaciesByTargetTypeId(
+          where: { damage_factor: { _gt: 100 } }
+        ) {
           attacking_type: type {
+            name
+            localizations: typenames(
+              where: { language_id: { _in: [ 7, 9 ] } }
+            ) {
+              name
+              language {
+                name
+              }
+            }
+          }
+        }
+        localizations: typenames(
+          where: { language_id: { _in: [ 7, 9 ] } }
+        ) {
+          name
+          language {
             name
           }
         }
@@ -29,7 +47,9 @@ final class PokemonGraphQLRepository implements PokemonRepository {
     abilities: pokemonabilities {
       ability {
         name
-        localizations: abilitynames(where: {language_id: {_in: [7, 9]}}) {
+        localizations: abilitynames(
+          where: { language_id: { _in: [ 7, 9 ] } }
+        ) {
           name
           language {
             name
@@ -39,7 +59,9 @@ final class PokemonGraphQLRepository implements PokemonRepository {
     }
     species: pokemonspecy {
       gender_rate
-      genera: pokemonspeciesnames(where: {language_id: {_in: [7, 9]}}) {
+      genera: pokemonspeciesnames(
+        where: { language_id: { _in: [ 7, 9 ] } }
+      ) {
         name
         genus
         language {
@@ -47,8 +69,8 @@ final class PokemonGraphQLRepository implements PokemonRepository {
         }
       }
       descriptions: pokemonspeciesflavortexts(
-        where: {language_id: {_in: [7, 9]}}
-        order_by: {version_id: desc}
+        where: { language_id: { _in: [ 7, 9 ] } }
+        order_by: { version_id: desc }
         limit: 4
       ) {
         version_id
@@ -61,21 +83,59 @@ final class PokemonGraphQLRepository implements PokemonRepository {
 ''';
 
   static const _getPokemonByIdsQuery = '''
-query GetPokemonByIds(\$ids: [Int!]!, \$limit: Int, \$offset: Int) {
+query GetPokemonById(\$ids: [Int!]!, \$limit: Int, \$offset: Int) {
   pokemons: pokemon(
-    where: {id: {_in: \$ids}},
+    where: { id: { _in: \$ids } },
     limit: \$limit,
     offset: \$offset
-    order_by: {id: asc}
+    order_by: { id: asc }
   ) {
 $_dataLayout
   }
 }
 ''';
 
-  static const _getPokemonListingQuery = '''
-query GetPokemonListing(\$limit: Int, \$offset: Int) {
-  pokemons: pokemon(limit: \$limit, offset: \$offset, order_by: {id: asc}) {
+  static const _searchPokemonQuery = '''
+query SearchPokemon(\$name: String!, \$limit: Int, \$offset: Int) {
+  pokemons: pokemon(
+    where: {
+      _or: [
+        { name: { _ilike: \$name } }
+        {
+          pokemonspecy: {
+            pokemonspeciesnames: {
+              name: { _ilike: \$name }
+              language_id: { _in: [ 7, 9 ] }
+            }
+          }
+        }
+      ]
+    }
+    limit: \$limit,
+    offset: \$offset
+    order_by: { id: asc }
+  ) {
+$_dataLayout
+  }
+}
+''';
+
+  static const _getPokemonByTypeIdsQuery = '''
+query GetPokemonByTypeIds(\$typeIds: [Int!]!, \$limit: Int, \$offset: Int) {
+  pokemons: pokemon(
+    where: { pokemontypes: { type_id: { _in: \$typeIds } } }
+    limit: \$limit,
+    offset: \$offset
+    order_by: { id: asc }
+  ) {
+$_dataLayout
+  }
+}
+''';
+
+  static const _getPokemonListQuery = '''
+query GetPokemonList(\$limit: Int, \$offset: Int) {
+  pokemons: pokemon(limit: \$limit, offset: \$offset, order_by: { id: asc }) {
 $_dataLayout
   }
 }
@@ -116,11 +176,11 @@ $_dataLayout
   }
 
   @override
-  Future<List<Pokemon>> getPokemonListing({int? limit, int? offset}) async {
+  Future<List<Pokemon>> getPokemonList({int? limit, int? offset}) async {
     final response = await _dio.post(
       '/v1beta2',
       data: {
-        'query': _getPokemonListingQuery,
+        'query': _getPokemonListQuery,
         'variables': {
           'limit': ?limit,
           'offset': ?offset,
