@@ -2,7 +2,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:pocket_ville/core/api/dio_client.dart';
 import 'package:pocket_ville/core/isolate/background_worker_provider.dart';
 import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
-import 'package:pocket_ville/features/pokemon/data/repositories/pokemon_repository_impl.dart';
+import 'package:pocket_ville/features/pokemon/data/repositories/pokemon_graph_ql_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'pokemon_listing_provider.g.dart';
@@ -67,9 +67,9 @@ final class PokemonListing extends _$PokemonListing {
   // Must be static to be used with compute()
   static Future<List<Pokemon>> _fetchPokemons(_FetchParams params) async {
     final dio = await createDioClient(params.apiUrl);
-    final repo = PokemonRepositoryImpl(dio);
+    final repo = PokemonGraphQLRepository(dio);
 
-    return await repo.getPokemonListing(
+    return await repo.getPokemonList(
       limit: params.limit,
       offset: params.offset,
     );
