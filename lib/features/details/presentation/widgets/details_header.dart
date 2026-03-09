@@ -1,7 +1,6 @@
 import 'package:cached_network_image_ce/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pocket_ville/core/extensions/pokemon_element_color.dart';
 import 'package:pocket_ville/features/details/presentation/painters/details_element_background_painter.dart';
 import 'package:pocket_ville/features/details/presentation/widgets/details_header_favorite_button.dart';
 import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
