@@ -25,14 +25,16 @@ final class FavoritesScreen extends ConsumerWidget {
           ),
         ),
         Expanded(child: switch (favoriteIds) {
-          AsyncValue(error: != null) => ErrorCard(
+          AsyncValue<Set<int>>(error: != null) => ErrorCard(
             title: AppLocalizations.of(context)!.somethingWentWrong,
             message: AppLocalizations.of(context)!.networkErrorMessage,
             child: RetryButton(
               onTap: () {},
             ),
           ),
-          AsyncValue(:final value?) => FavoritesView(favoriteIds: value),
+          AsyncValue<Set<int>>(:final value?) => FavoritesView(
+            favoriteIds: value,
+          ),
           _ => const Center(child: Loading(),),
         }),
       ],

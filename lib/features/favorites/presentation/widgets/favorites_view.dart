@@ -6,6 +6,7 @@ import 'package:pocket_ville/core/presentation/widgets/error_card.dart';
 import 'package:pocket_ville/core/presentation/widgets/loading.dart';
 import 'package:pocket_ville/core/presentation/widgets/retry_button.dart';
 import 'package:pocket_ville/features/favorites/presentation/providers/favorites_provider.dart';
+import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
 import 'package:pocket_ville/features/pokemon/presentation/providers/pokemon_by_id_provider.dart';
 import 'package:pocket_ville/features/pokemon/presentation/widgets/pokemon_card.dart';
 
@@ -22,14 +23,14 @@ final class FavoritesView extends ConsumerWidget {
     final favoritePokemon = ref.watch(pokemonByIdProvider(favoriteIds));
     
     return switch (favoritePokemon) {
-      AsyncValue(error: != null) => ErrorCard(
+      AsyncValue<List<Pokemon>>(error: != null) => ErrorCard(
         title: AppLocalizations.of(context)!.somethingWentWrong,
         message: AppLocalizations.of(context)!.networkErrorMessage,
         child: RetryButton(
           onTap: () => ref.invalidate(pokemonByIdProvider(favoriteIds)),
         ),
       ),
-      AsyncValue(:final value?) => switch (value.isEmpty) {
+      AsyncValue<List<Pokemon>>(:final value?) => switch (value.isEmpty) {
         true => ErrorCard(
           title: AppLocalizations.of(context)!.noFavoritesTitle,
           message: AppLocalizations.of(context)!.noFavoritesSubtitle,

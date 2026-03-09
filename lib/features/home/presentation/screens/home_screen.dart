@@ -29,14 +29,14 @@ final class HomeScreen extends ConsumerWidget {
           ],
         ),
         Expanded(child: switch (pokemonListing) {
-          AsyncValue(error: != null) => ErrorCard(
+          AsyncValue<List<Pokemon>>(error: != null) => ErrorCard(
             title: AppLocalizations.of(context)!.somethingWentWrong,
             message: AppLocalizations.of(context)!.networkErrorMessage,
             child: RetryButton(
               onTap: () => ref.invalidate(pokemonListingProvider)
             ),
           ),
-          AsyncValue(:final value?) =>
+          AsyncValue<List<Pokemon>>(:final value?) =>
             NotificationListener<ScrollNotification>(
               onNotification: (notification) {
                 final position = notification.metrics.pixels;

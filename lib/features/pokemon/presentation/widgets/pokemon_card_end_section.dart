@@ -2,7 +2,6 @@ import 'package:cached_network_image_ce/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pocket_ville/core/extensions/pokemon_element_color.dart';
 import 'package:pocket_ville/features/favorites/presentation/providers/favorites_provider.dart';
 import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
 import 'package:pocket_ville/features/pokemon/presentation/widgets/pokemon_card_favorite_button.dart';
@@ -55,7 +54,9 @@ final class PokemonCardEndSection extends ConsumerWidget {
             right: -10,
             child: PokemonCardFavoriteButton(
               favorited: switch (favorites) {
-                AsyncValue(:final value?) => value.contains(pokemon.id),
+                AsyncValue<Set<int>>(:final value?) => value.contains(
+                  pokemon.id
+                ),
                 _ => false,
               },
               onPressed: () {
