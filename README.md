@@ -16,9 +16,13 @@ The practical encyclopedia for trainers, at your fingertips. Dive in the horizon
 
 This a conceptual project of a Pokedex-like mobile app made for a technical test. Built entirely with Flutter + Riverpod.
 
-# PocketVille in Detail
-
 This project has been incredibly beneficial for my personal growth, allowing me to learn a lot of new things. Even more importantly, it's forced me to break out of the "mold" I had adapted to in my previous job, where I had acquired many habits. These habits aren't necessarily bad, but they clearly aren't suitable for every type of project.
+
+## Small Details
+
+I took the liberty of going a little beyond the original design and changed the colors for the Pokémon types/elements, mainly because the original design had repeated colors for some types/elements.
+
+I think it's small details like these that make a difference in how the end user perceives the quality of the application, so I always like to check these kinds of details.
 
 ## As Standard as Possible
 

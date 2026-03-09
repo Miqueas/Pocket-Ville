@@ -14,9 +14,13 @@ La enciclopedia práctica para entrenadores, al alcance de tus manos. Sumérgete
 
 Ésto es un poyecto conceptual de una app al estilo Pokedex para móviles la cual hice para una prueba técnica. Hecha enteramente con Flutter y Riverpod.
 
-# Pocket Ville a detalle
-
 Éste proyecto ha sido increíblemente beneficioso para mi crecimiento personal, pudiendo aprender un montón de cosas nuevas y, aún más, he tenido que salir del "molde" al cual me había adaptado en mi trabajo anterior, en donde había adquirido muchas costumbres, las cuales no son necesariamente malas, pero claramente no se ajustan a todo tipo de proyectos.
+
+## Pequeños detalles
+
+Me tomé la libertad de ir un poco más allá del diseño original y cambié los colores para los tipos/elementos de los Pokémon, principalmente porque el diseño original tenía colores repetidos para algunos tipos/elementos.
+
+Pienso que los pequeños detalles como éstos los que marcan una diferencia sobre cómo el usuario final percibe la calidad de la aplicación, por lo que siempre me gusta chequear ese tipo de detalles.
 
 ## Lo más estándar posible
 
