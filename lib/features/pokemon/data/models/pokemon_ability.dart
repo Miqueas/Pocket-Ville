@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pocket_ville/features/pokemon/data/models/pokemon_ability_localization.dart';
+import 'package:pocket_ville/features/pokemon/data/models/pokemon_localization.dart';
 
 part 'pokemon_ability.freezed.dart';
 
@@ -7,13 +7,13 @@ part 'pokemon_ability.freezed.dart';
 abstract class PokemonAbility with _$PokemonAbility {
   const factory PokemonAbility({
     required String name,
-    required List<PokemonAbilityLocalization> localizations,
+    required List<PokemonLocalization> localizations,
   }) = _PokemonAbility;
 
   factory PokemonAbility.fromJson(Map<String, dynamic> json) => _PokemonAbility(
     name: json['name'],
     localizations: (json['localizations'] as List)
-      .map((e) => PokemonAbilityLocalization.fromJson(e))
+      .map((e) => PokemonLocalization.fromJson(e))
       .toList(),
   );
 }

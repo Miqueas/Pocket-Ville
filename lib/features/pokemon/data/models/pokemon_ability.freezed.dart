@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PokemonAbility {
 
- String get name; List<PokemonAbilityLocalization> get localizations;
+ String get name; List<PokemonLocalization> get localizations;
 /// Create a copy of PokemonAbility
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $PokemonAbilityCopyWith<$Res>  {
   factory $PokemonAbilityCopyWith(PokemonAbility value, $Res Function(PokemonAbility) _then) = _$PokemonAbilityCopyWithImpl;
 @useResult
 $Res call({
- String name, List<PokemonAbilityLocalization> localizations
+ String name, List<PokemonLocalization> localizations
 });
 
 
@@ -66,7 +66,7 @@ class _$PokemonAbilityCopyWithImpl<$Res>
   return _then(_self.copyWith(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,localizations: null == localizations ? _self.localizations : localizations // ignore: cast_nullable_to_non_nullable
-as List<PokemonAbilityLocalization>,
+as List<PokemonLocalization>,
   ));
 }
 
@@ -151,7 +151,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  List<PokemonAbilityLocalization> localizations)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  List<PokemonLocalization> localizations)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PokemonAbility() when $default != null:
 return $default(_that.name,_that.localizations);case _:
@@ -172,7 +172,7 @@ return $default(_that.name,_that.localizations);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  List<PokemonAbilityLocalization> localizations)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  List<PokemonLocalization> localizations)  $default,) {final _that = this;
 switch (_that) {
 case _PokemonAbility():
 return $default(_that.name,_that.localizations);case _:
@@ -192,7 +192,7 @@ return $default(_that.name,_that.localizations);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  List<PokemonAbilityLocalization> localizations)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  List<PokemonLocalization> localizations)?  $default,) {final _that = this;
 switch (_that) {
 case _PokemonAbility() when $default != null:
 return $default(_that.name,_that.localizations);case _:
@@ -207,12 +207,12 @@ return $default(_that.name,_that.localizations);case _:
 
 
 class _PokemonAbility implements PokemonAbility {
-  const _PokemonAbility({required this.name, required final  List<PokemonAbilityLocalization> localizations}): _localizations = localizations;
+  const _PokemonAbility({required this.name, required final  List<PokemonLocalization> localizations}): _localizations = localizations;
   
 
 @override final  String name;
- final  List<PokemonAbilityLocalization> _localizations;
-@override List<PokemonAbilityLocalization> get localizations {
+ final  List<PokemonLocalization> _localizations;
+@override List<PokemonLocalization> get localizations {
   if (_localizations is EqualUnmodifiableListView) return _localizations;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_localizations);
@@ -249,7 +249,7 @@ abstract mixin class _$PokemonAbilityCopyWith<$Res> implements $PokemonAbilityCo
   factory _$PokemonAbilityCopyWith(_PokemonAbility value, $Res Function(_PokemonAbility) _then) = __$PokemonAbilityCopyWithImpl;
 @override @useResult
 $Res call({
- String name, List<PokemonAbilityLocalization> localizations
+ String name, List<PokemonLocalization> localizations
 });
 
 
@@ -270,7 +270,7 @@ class __$PokemonAbilityCopyWithImpl<$Res>
   return _then(_PokemonAbility(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,localizations: null == localizations ? _self._localizations : localizations // ignore: cast_nullable_to_non_nullable
-as List<PokemonAbilityLocalization>,
+as List<PokemonLocalization>,
   ));
 }
 
