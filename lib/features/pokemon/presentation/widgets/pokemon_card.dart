@@ -2,9 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:pocket_ville/core/extensions/gap.dart';
-import 'package:pocket_ville/core/extensions/pokemon_element_color.dart';
 import 'package:pocket_ville/core/l10n/app_localizations.dart';
-import 'package:pocket_ville/core/navigation/home_routes.dart';
 import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
 import 'package:pocket_ville/features/pokemon/presentation/widgets/pokemon_card_end_section.dart';
 import 'package:pocket_ville/features/pokemon/presentation/widgets/pokemon_element_pill.dart';
@@ -13,9 +11,11 @@ final class PokemonCard extends StatelessWidget {
   const PokemonCard({
     super.key,
     required this.pokemon,
+    this.onTap,
   });
 
   final Pokemon pokemon;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ final class PokemonCard extends StatelessWidget {
     final mainElement = pokemon.types.first.element;
 
     return GestureDetector(
-      onTap: () => Navigator.of(context).pushDetails(pokemon),
+      onTap: onTap,
       child: Container(
         clipBehavior: .antiAlias,
         decoration: BoxDecoration(
