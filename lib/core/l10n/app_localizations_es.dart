@@ -78,6 +78,8 @@ class AppLocalizationsEs extends AppLocalizations {
       'rock': 'Roca',
       'steel': 'Acero',
       'water': 'Agua',
+      'stellar': 'Astral',
+      'unknown': 'Desconocido',
       'other': 'Otro',
     });
     return '$_temp0';
@@ -107,4 +109,16 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get weaknesses => 'Debilidades';
+
+  @override
+  String get filterByPreference => 'Filtra por tus preferencias';
+
+  @override
+  String get type => 'Tipo';
+
+  @override
+  String get apply => 'Aplicar';
+
+  @override
+  String get cancel => 'Cancelar';
 }

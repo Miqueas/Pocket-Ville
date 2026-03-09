@@ -60,7 +60,7 @@
   "@searchPokemon": {
     "description": "Placeholder text shown in the search input to search for Pokémon"
   },
-  "pokemonType": "{type, select, bug{Bicho} dark{Siniestro} dragon{Dragón} electric{Eléctrico} fairy{Hada} fighting{Lucha} fire{Fuego} flying{Volador} ghost{Fantasma} grass{Planta} ground{Tierra} ice{Hielo} normal{Normal} poison{Veneno} psychic{Psíquico} rock{Roca} steel{Acero} water{Agua} other{Otro}}",
+  "pokemonType": "{type, select, bug{Bicho} dark{Siniestro} dragon{Dragón} electric{Eléctrico} fairy{Hada} fighting{Lucha} fire{Fuego} flying{Volador} ghost{Fantasma} grass{Planta} ground{Tierra} ice{Hielo} normal{Normal} poison{Veneno} psychic{Psíquico} rock{Roca} steel{Acero} water{Agua} stellar{Astral} unknown{Desconocido} other{Otro}}",
   "@pokemonType": {
     "description": "Text shown to indicate the type of a Pokémon",
     "placeholders": {
@@ -100,5 +100,21 @@
   "weaknesses": "Debilidades",
   "@weaknesses": {
     "description": "Used in the Pokémon details screen to indicate the weaknesses of a Pokémon"
+  },
+  "filterByPreference": "Filtra por tus preferencias",
+  "@filterByPreference": {
+    "description": "Home filter bottom sheet title"
+  },
+  "type": "Tipo",
+  "@type": {
+    "description": "Used in the home filter bottom sheet Pokémon type"
+  },
+  "apply": "Aplicar",
+  "@apply": {
+    "description": "Home filter bottom sheet apply button text"
+  },
+  "cancel": "Cancelar",
+  "@cancel": {
+    "description": "Home filter bottom sheet cancel button text"
   }
 }

@@ -191,7 +191,7 @@ abstract class AppLocalizations {
   /// Text shown to indicate the type of a Pokémon
   ///
   /// In en, this message translates to:
-  /// **'{type, select, bug{Bug} dark{Dark} dragon{Dragon} electric{Electric} fairy{Fairy} fighting{Fighting} fire{Fire} flying{Flying} ghost{Ghost} grass{Grass} ground{Ground} ice{Ice} normal{Normal} poison{Poison} psychic{Psychic} rock{Rock} steel{Steel} water{Water} other{Other}}'**
+  /// **'{type, select, bug{Bug} dark{Dark} dragon{Dragon} electric{Electric} fairy{Fairy} fighting{Fighting} fire{Fire} flying{Flying} ghost{Ghost} grass{Grass} ground{Ground} ice{Ice} normal{Normal} poison{Poison} psychic{Psychic} rock{Rock} steel{Steel} water{Water} stellar{Stellar} unknown{Unknown} other{Other}}'**
   String pokemonType(String type);
 
   /// Text shown in the button to retry an action after an error occurs
@@ -241,6 +241,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Weaknesses'**
   String get weaknesses;
+
+  /// Used in the home filter bottom sheet title
+  ///
+  /// In en, this message translates to:
+  /// **'Filter by preference'**
+  String get filterByPreference;
+
+  /// Used in the home filter bottom sheet Pokémon type
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get type;
+
+  /// Home filter bottom sheet apply button text
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
+
+  /// Home filter bottom sheet cancel button text
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
 }
 
 class _AppLocalizationsDelegate
