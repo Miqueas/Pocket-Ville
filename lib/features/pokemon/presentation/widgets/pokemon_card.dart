@@ -64,8 +64,8 @@ final class PokemonCard extends StatelessWidget {
                     constraints: const BoxConstraints(maxHeight: 36,),
                     child: ListView.separated(
                       itemCount: pokemon.types.length,
-                      itemBuilder: (context, index) => PokemonElementPill(
-                        element: pokemon.types[index].element,
+                      itemBuilder: (context, index) => PokemonTypePill(
+                        type: pokemon.types[index],
                       ),
                       scrollDirection: .horizontal,
                       separatorBuilder: (_, _) => 8.w,

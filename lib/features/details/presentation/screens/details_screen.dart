@@ -114,7 +114,7 @@ final class _DetailsScreenState extends State<DetailsScreen> {
                 spacing: 8,
                 runSpacing: 8,
                 children: widget.pokemon.types
-                  .map((t) => PokemonElementPill(element: t.element,))
+                  .map((t) => PokemonTypePill(type: t,))
                   .toList(),
               ),
               24.h,
@@ -189,7 +189,7 @@ final class _DetailsScreenState extends State<DetailsScreen> {
                 spacing: 8,
                 runSpacing: 8,
                 children: widget.pokemon.types.first.weaknesses
-                  .map((e) => PokemonElementPill(element: e,))
+                  .map((t) => PokemonTypePill(type: t,))
                   .toList(),
               ),
             ],
