@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PokemonType {
 
- PokemonElement get element; List<PokemonElement> get weaknesses;
+ PokemonElement get element; List<PokemonType> get weaknesses; List<PokemonLocalization> get localizations;
 /// Create a copy of PokemonType
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $PokemonTypeCopyWith<PokemonType> get copyWith => _$PokemonTypeCopyWithImpl<Poke
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PokemonType&&(identical(other.element, element) || other.element == element)&&const DeepCollectionEquality().equals(other.weaknesses, weaknesses));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PokemonType&&(identical(other.element, element) || other.element == element)&&const DeepCollectionEquality().equals(other.weaknesses, weaknesses)&&const DeepCollectionEquality().equals(other.localizations, localizations));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,element,const DeepCollectionEquality().hash(weaknesses));
+int get hashCode => Object.hash(runtimeType,element,const DeepCollectionEquality().hash(weaknesses),const DeepCollectionEquality().hash(localizations));
 
 @override
 String toString() {
-  return 'PokemonType(element: $element, weaknesses: $weaknesses)';
+  return 'PokemonType(element: $element, weaknesses: $weaknesses, localizations: $localizations)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $PokemonTypeCopyWith<$Res>  {
   factory $PokemonTypeCopyWith(PokemonType value, $Res Function(PokemonType) _then) = _$PokemonTypeCopyWithImpl;
 @useResult
 $Res call({
- PokemonElement element, List<PokemonElement> weaknesses
+ PokemonElement element, List<PokemonType> weaknesses, List<PokemonLocalization> localizations
 });
 
 
@@ -62,11 +62,12 @@ class _$PokemonTypeCopyWithImpl<$Res>
 
 /// Create a copy of PokemonType
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? element = null,Object? weaknesses = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? element = null,Object? weaknesses = null,Object? localizations = null,}) {
   return _then(_self.copyWith(
 element: null == element ? _self.element : element // ignore: cast_nullable_to_non_nullable
 as PokemonElement,weaknesses: null == weaknesses ? _self.weaknesses : weaknesses // ignore: cast_nullable_to_non_nullable
-as List<PokemonElement>,
+as List<PokemonType>,localizations: null == localizations ? _self.localizations : localizations // ignore: cast_nullable_to_non_nullable
+as List<PokemonLocalization>,
   ));
 }
 
@@ -151,10 +152,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PokemonElement element,  List<PokemonElement> weaknesses)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PokemonElement element,  List<PokemonType> weaknesses,  List<PokemonLocalization> localizations)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PokemonType() when $default != null:
-return $default(_that.element,_that.weaknesses);case _:
+return $default(_that.element,_that.weaknesses,_that.localizations);case _:
   return orElse();
 
 }
@@ -172,10 +173,10 @@ return $default(_that.element,_that.weaknesses);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PokemonElement element,  List<PokemonElement> weaknesses)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PokemonElement element,  List<PokemonType> weaknesses,  List<PokemonLocalization> localizations)  $default,) {final _that = this;
 switch (_that) {
 case _PokemonType():
-return $default(_that.element,_that.weaknesses);case _:
+return $default(_that.element,_that.weaknesses,_that.localizations);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -192,10 +193,10 @@ return $default(_that.element,_that.weaknesses);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PokemonElement element,  List<PokemonElement> weaknesses)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PokemonElement element,  List<PokemonType> weaknesses,  List<PokemonLocalization> localizations)?  $default,) {final _that = this;
 switch (_that) {
 case _PokemonType() when $default != null:
-return $default(_that.element,_that.weaknesses);case _:
+return $default(_that.element,_that.weaknesses,_that.localizations);case _:
   return null;
 
 }
@@ -207,15 +208,22 @@ return $default(_that.element,_that.weaknesses);case _:
 
 
 class _PokemonType implements PokemonType {
-  const _PokemonType({required this.element, required final  List<PokemonElement> weaknesses}): _weaknesses = weaknesses;
+  const _PokemonType({required this.element, required final  List<PokemonType> weaknesses, required final  List<PokemonLocalization> localizations}): _weaknesses = weaknesses,_localizations = localizations;
   
 
 @override final  PokemonElement element;
- final  List<PokemonElement> _weaknesses;
-@override List<PokemonElement> get weaknesses {
+ final  List<PokemonType> _weaknesses;
+@override List<PokemonType> get weaknesses {
   if (_weaknesses is EqualUnmodifiableListView) return _weaknesses;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_weaknesses);
+}
+
+ final  List<PokemonLocalization> _localizations;
+@override List<PokemonLocalization> get localizations {
+  if (_localizations is EqualUnmodifiableListView) return _localizations;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_localizations);
 }
 
 
@@ -229,16 +237,16 @@ _$PokemonTypeCopyWith<_PokemonType> get copyWith => __$PokemonTypeCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PokemonType&&(identical(other.element, element) || other.element == element)&&const DeepCollectionEquality().equals(other._weaknesses, _weaknesses));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PokemonType&&(identical(other.element, element) || other.element == element)&&const DeepCollectionEquality().equals(other._weaknesses, _weaknesses)&&const DeepCollectionEquality().equals(other._localizations, _localizations));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,element,const DeepCollectionEquality().hash(_weaknesses));
+int get hashCode => Object.hash(runtimeType,element,const DeepCollectionEquality().hash(_weaknesses),const DeepCollectionEquality().hash(_localizations));
 
 @override
 String toString() {
-  return 'PokemonType(element: $element, weaknesses: $weaknesses)';
+  return 'PokemonType(element: $element, weaknesses: $weaknesses, localizations: $localizations)';
 }
 
 
@@ -249,7 +257,7 @@ abstract mixin class _$PokemonTypeCopyWith<$Res> implements $PokemonTypeCopyWith
   factory _$PokemonTypeCopyWith(_PokemonType value, $Res Function(_PokemonType) _then) = __$PokemonTypeCopyWithImpl;
 @override @useResult
 $Res call({
- PokemonElement element, List<PokemonElement> weaknesses
+ PokemonElement element, List<PokemonType> weaknesses, List<PokemonLocalization> localizations
 });
 
 
@@ -266,11 +274,12 @@ class __$PokemonTypeCopyWithImpl<$Res>
 
 /// Create a copy of PokemonType
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? element = null,Object? weaknesses = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? element = null,Object? weaknesses = null,Object? localizations = null,}) {
   return _then(_PokemonType(
 element: null == element ? _self.element : element // ignore: cast_nullable_to_non_nullable
 as PokemonElement,weaknesses: null == weaknesses ? _self._weaknesses : weaknesses // ignore: cast_nullable_to_non_nullable
-as List<PokemonElement>,
+as List<PokemonType>,localizations: null == localizations ? _self._localizations : localizations // ignore: cast_nullable_to_non_nullable
+as List<PokemonLocalization>,
   ));
 }
 
