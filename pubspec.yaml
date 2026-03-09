@@ -75,6 +75,8 @@ flutter:
     - assets/icons/user.svg
     - assets/icons/globe.svg
     - assets/icons/search.svg
+    - assets/icons/male.svg
+    - assets/icons/female.svg
     # Pokéball illustration, used in the splash screen
     - assets/splash/pokeball.svg
     # All elements illustrations
