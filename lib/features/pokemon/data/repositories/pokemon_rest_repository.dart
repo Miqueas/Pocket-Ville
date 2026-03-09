@@ -22,7 +22,7 @@ final class PokemonRestRepository implements PokemonRepository {
   }) => throw UnimplementedError('This repository is not implemented yet');
 
   @override
-  Future<List<Pokemon>> getPokemonListing({
+  Future<List<Pokemon>> getPokemonList({
     int? limit,
     int? offset,
   }) async {

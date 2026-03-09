@@ -13,7 +13,7 @@ abstract class PokemonRepository {
     int? offset,
   });
 
-  Future<List<Pokemon>> getPokemonListing({
+  Future<List<Pokemon>> getPokemonList({
     int? limit,
     int? offset,
   });
