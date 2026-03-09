@@ -19,6 +19,8 @@ final class HomeFiltersBottomSheetElementItem extends StatelessWidget {
       style: const TextStyle(fontSize: 14,),
     ),),
     8.w,
-    const PVCheckbox(),
+    const PVCheckbox(
+      checked: true,
+    ),
   ],);
 }
