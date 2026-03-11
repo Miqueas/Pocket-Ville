@@ -4,9 +4,10 @@ import 'package:intl/intl.dart';
 import 'package:pocket_ville/core/extensions/gap.dart';
 import 'package:pocket_ville/core/l10n/app_localizations.dart';
 import 'package:pocket_ville/features/details/presentation/widgets/details_feature.dart';
-import 'package:pocket_ville/features/details/presentation/widgets/details_header.dart';
+import 'package:pocket_ville/features/details/presentation/widgets/details_gender_bar.dart';
+import 'package:pocket_ville/features/details/presentation/widgets/details_gender_percentages.dart';
+import 'package:pocket_ville/features/details/presentation/widgets/details_header_image_name_id_types_and_description.dart';
 import 'package:pocket_ville/features/pokemon/data/models/pokemon.dart';
-import 'package:pocket_ville/features/pokemon/data/models/pokemon_description.dart';
 import 'package:pocket_ville/features/pokemon/presentation/widgets/pokemon_element_pill.dart';
 
 final class DetailsScreen extends StatefulWidget {
@@ -28,20 +29,6 @@ final class _DetailsScreenState extends State<DetailsScreen> {
   void dispose() {
     _scrollController.dispose();
     super.dispose();
-  }
-
-  bool _getDescription(PokemonDescription description, String localeName) {
-    final versionId = description.versionId;
-    final language = description.language;
-
-    final hasV33 = widget.pokemon.species.descriptions.any(
-      (description) => description.versionId == 33
-    );
-
-    return switch (hasV33) {
-      true => (versionId == 33 && language == localeName),
-      false => language == localeName,
-    };
   }
 
   @override
@@ -84,51 +71,11 @@ final class _DetailsScreenState extends State<DetailsScreen> {
         clipBehavior: .none,
         controller: _scrollController,
         slivers: [
-          SliverToBoxAdapter(child: Column(
-            crossAxisAlignment: .start,
-            mainAxisSize: .min,
-            children: [
-              DetailsHeader(pokemon: widget.pokemon,),
-              16.h,
-              Text(
-                widget.pokemon.species.genera
-                  .firstWhere((g) => g.language == localeName)
-                  .name,
-                style: const TextStyle(
-                  color: Color(0xFF121212),
-                  fontSize: 32,
-                  fontWeight: .w500,
-                ),
-              ),
-              Text(
-                'Nº${widget.pokemon.id.toString().padLeft(3, '0')}',
-                style: const TextStyle(
-                  color: Color(0xFF424242),
-                  fontSize: 16,
-                  fontWeight: .w500,
-                ),
-                overflow: .ellipsis,
-              ),
-              24.h,
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: widget.pokemon.types
-                  .map((t) => PokemonTypePill(type: t,))
-                  .toList(),
-              ),
-              24.h,
-              Text(
-                widget.pokemon.species.descriptions
-                  .firstWhere((d) => _getDescription(d, localeName))
-                  .description
-                  .replaceAll('\n', ' '),
-              ),
-              20.h,
-              const Divider(color: Color(0xFFE0E0E0),),
-              16.h,
-            ],
-          ),),
+          SliverToBoxAdapter(
+            child: DetailsHeaderImageNameIDTypesAndDescription(
+              pokemon: widget.pokemon,
+            ),
+          ),
           SliverGrid(
             delegate: SliverChildListDelegate([
               DetailsFeature(
@@ -154,11 +101,9 @@ final class _DetailsScreenState extends State<DetailsScreen> {
                 icon: 'ability',
                 label: AppLocalizations.of(context)!.ability,
                 value: widget.pokemon.abilities
-                  .firstWhere(
-                    (a) => a.localizations.any(
-                      (l) => l.language == localeName
-                    )
-                  )
+                  .firstWhere((a) => a.localizations.any(
+                    (l) => l.language == localeName
+                  ))
                   .localizations
                   .firstWhere((l) => l.language == localeName)
                   .name,
@@ -175,6 +120,15 @@ final class _DetailsScreenState extends State<DetailsScreen> {
             mainAxisSize: .min,
             crossAxisAlignment: .start,
             children: [
+              20.h,
+              Center(child: Text(
+                AppLocalizations.of(context)!.gender,
+                style: const TextStyle(color: Color(0xFF424242),),
+              ),),
+              12.h,
+              DetailsGenderBar(pokemon: widget.pokemon),
+              4.h,
+              DetailsGenderPercentages(pokemon: widget.pokemon),
               40.h,
               Text(
                 AppLocalizations.of(context)!.weaknesses,
