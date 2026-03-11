@@ -28,7 +28,7 @@ final class PokemonListing extends _$PokemonListing {
   @override
   Future<List<Pokemon>> build() async {
     final worker = await ref.watch(backgroundWorkerProvider.future);
-    final baseUrl = dotenv.env['API_URL']!;
+    final baseUrl = dotenv.env['GQL_URL']!;
 
     return await worker.run(
       _fetchPokemons,
@@ -51,7 +51,7 @@ final class PokemonListing extends _$PokemonListing {
     _offset += _limit;
 
     final worker = await ref.read(backgroundWorkerProvider.future);
-    final baseUrl = dotenv.env['API_URL']!;
+    final baseUrl = dotenv.env['GQL_URL']!;
     final pokemons = await worker.run(
       _fetchPokemons,
       _FetchParams(
@@ -66,7 +66,7 @@ final class PokemonListing extends _$PokemonListing {
 
   // Must be static to be used with compute()
   static Future<List<Pokemon>> _fetchPokemons(_FetchParams params) async {
-    final dio = await createDioClient(params.apiUrl);
+    final dio = await newDioClient(params.apiUrl);
     final repo = PokemonGraphQLRepository(dio);
 
     return await repo.getPokemonList(

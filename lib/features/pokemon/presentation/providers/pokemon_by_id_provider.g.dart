@@ -50,7 +50,7 @@ final class PokemonByIdProvider
   }
 }
 
-String _$pokemonByIdHash() => r'067134b1d80e32838146cccdb2dc09ecb72f8cfa';
+String _$pokemonByIdHash() => r'b98b6d2d44c36ce49d057cd477c4a72435079346';
 
 final class PokemonByIdFamily extends $Family
     with
