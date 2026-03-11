@@ -69,6 +69,8 @@ flutter:
     - assets/icons/steel.svg
     - assets/icons/water.svg
     - assets/icons/weight.svg
+    - assets/icons/stellar.svg
+    - assets/icons/unknown.svg
     # Other icons
     - assets/icons/house.svg
     - assets/icons/heart.svg
@@ -98,6 +100,8 @@ flutter:
     - assets/elements/rock.svg
     - assets/elements/steel.svg
     - assets/elements/water.svg
+    - assets/elements/stellar.svg
+    - assets/elements/unknown.svg
     # Onboarding illustrations
     - assets/onboarding/hilda-dark-mode.svg
     - assets/onboarding/hilda-light-mode.svg
