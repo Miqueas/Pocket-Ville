@@ -1,18 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http_cache_hive_store/http_cache_hive_store.dart';
 import 'package:native_dio_adapter/native_dio_adapter.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'dio_client.g.dart';
-
-@riverpod
-Future<Dio> dio(Ref ref) async => await createDioClient(dotenv.env['API_URL']!);
-
-Future<Dio> createDioClient(String baseUrl) async {
+Future<Dio> newDioClient(String baseUrl) async {
   final tempDir = await getTemporaryDirectory();
   final cacheStore = HiveCacheStore(tempDir.path);
   final cacheOptions = CacheOptions(
